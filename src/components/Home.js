@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import LoggedInHome from './LoggedInHome'
 
 const Home = (props) => {
 
@@ -12,7 +13,7 @@ const Home = (props) => {
         </div>
       );
     } else {
-      return 
+      return <LoggedInHome user={props.user} />
     }
   };
   export default Home;
