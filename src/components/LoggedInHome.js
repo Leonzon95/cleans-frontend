@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
-class LoggedInHome {
+class LoggedInHome extends Component {
+    
     render() {
+        
         return (
             <div>
-                You are Loggeid in as {this.props.user.username}
+                You are Logged in as {this.props.user.username}
             </div>
         )
     }

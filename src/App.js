@@ -28,9 +28,10 @@ class App extends Component{
   loginStatus = () => {
     axios.get('http://localhost:3001/logged_in', 
     {withCredentials: true})
-    .then(response => {
-      if (response.data.logged_in) {
-        this.handleLogin(response)
+    .then(response => response.json())
+    .then(json => {
+      if (json.data.logged_in) {
+        this.handleLogin(json)
       } else {
         this.handleLogout()
       }
@@ -47,8 +48,10 @@ class App extends Component{
       <div>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' render={props => <Home {...props} loggedInStatus={this.state.isLoggedIn} user={user} />} />
+            <Route exact path='/' render={props => <Home {...props} loggedInStatus={this.state.isLoggedIn} user={this.state.user} />} />
+
             <Route exact path='/login' render={props => <LogIn {...props} loggedInStatus={this.state.isLoggedIn} handleLogin={this.handleLogin} />} />
+
             <Route exact path='/signup' render={props => <SignUp {...props} loggedInStatus={this.state.isLoggedIn} handleLogin={this.handleLogin} />} />
           </Switch>
         </BrowserRouter>

@@ -6,7 +6,6 @@ class LogIn extends Component {
   
     state = { 
       username: '',
-      email: '',
       password: '',
       errors: ''
     };
@@ -24,10 +23,9 @@ class LogIn extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const {username, email, password} = this.state
+        const {username, password} = this.state
         let user = {
           username: username,
-          email: email,
           password: password
         }
         
@@ -60,7 +58,7 @@ class LogIn extends Component {
     }
 
     render() {
-        const {username, email, password} = this.state
+        const {username, password} = this.state
 
         return (
             <div>
@@ -74,13 +72,6 @@ class LogIn extends Component {
                     type="text"
                     name="username"
                     value={username}
-                    onChange={this.handleChange}
-                />
-                <input
-                    placeholder="email"
-                    type="text"
-                    name="email"
-                    value={email}
                     onChange={this.handleChange}
                 />
                 <input
