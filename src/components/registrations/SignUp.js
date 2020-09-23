@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, Col, Button } from 'react-bootstrap';
+import { Form, Col, Button, Alert } from 'react-bootstrap';
 
 class SignUp extends Component {
-  
     state = { 
       first_name: '',
       last_name: '',
@@ -38,7 +37,7 @@ class SignUp extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const {first_name, last_name, username, email, password, password_confirmation, is_cleaner} = this.state;
+        const {first_name, last_name, username, email, password, password_confirmation, is_cleaner, phone_number} = this.state;
         let user = {
           username: username,
           email: email,
@@ -46,11 +45,13 @@ class SignUp extends Component {
           password_confirmation: password_confirmation,
           first_name: first_name,
           last_name: last_name,
-          is_cleaner: is_cleaner
+          is_cleaner: is_cleaner,
+          phone_number: phone_number
         }
         axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
         .then(response => {
           if (response.data.status === 'created') {
+            
             this.props.handleLogin(response.data);
             this.redirect();
           } else {
@@ -70,20 +71,20 @@ class SignUp extends Component {
     handleErrors = () => {
         return (
           <div>
-            <ul>
-            {this.state.errors.map(error =>  <li key={error}>{error}</li>)}
-            </ul>
+            <Alert variant="danger">
+            {this.state.errors.map(error => <li>{error}</li>)}
+            </Alert>
           </div>
         );
     }
 
     render() {
-        const {username, email, password, password_confirmation, first_name, last_name, is_cleaner} = this.state
+        const {username, email, password, password_confirmation, first_name, last_name, is_cleaner, phone_number} = this.state
         return (
             <div>
                 <h1>Sign Up</h1>
                 {this.state.errors ? this.handleErrors() : null}
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                   <Form.Row>
                     <Form.Group as={Col} controlId="formGridFirstName">
                       <Form.Label>First Name</Form.Label>
@@ -110,7 +111,7 @@ class SignUp extends Component {
                   <Form.Row>
                     <Form.Group as={Col} controlId="formGridPhoneNumber">
                       <Form.Label>Phone Number</Form.Label>
-                      <Form.Control type="password" placeholder="Ex. +1 123-456-7899"  name="password" value={password} onChange={this.handleChange}/>
+                      <Form.Control placeholder="Ex. +1 123-456-7899"  name="phone_number" value={phone_number} onChange={this.handleChange}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPassword">
