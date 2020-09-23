@@ -22,9 +22,8 @@ class SignUp extends Component {
 
     handleChange = (event) => {
         let {name, value} = event.target;
-        console.log(value)
         if (name === 'is_cleaner') {
-          if (!value) {
+          if (value === "false") {
             value = true;
             console.log("hello true")
           } else {
@@ -35,7 +34,6 @@ class SignUp extends Component {
         this.setState({
         [name]: value
         });
-        console.log(value)
     }
 
     handleSubmit = (event) => {
@@ -84,9 +82,7 @@ class SignUp extends Component {
         return (
             <div>
                 <h1>Sign Up</h1>
-                <div>
-                    {this.state.errors ? this.handleErrors() : null}
-                </div>
+                {this.state.errors ? this.handleErrors() : null}
                 <Form>
                   <Form.Row>
                     <Form.Group as={Col} controlId="formGridFirstName">
