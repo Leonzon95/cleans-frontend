@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css'
 import axios from 'axios';
-import { Container } from 'react-bootstrap';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Home from './components/Home';

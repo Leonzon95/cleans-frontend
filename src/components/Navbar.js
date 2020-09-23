@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav, Button, Container } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 class NavBar extends Component {
@@ -19,6 +19,7 @@ class NavBar extends Component {
     render() {
         return (
             <Navbar bg="light" expand="lg" >
+            <Container>
                 <Navbar.Brand ><Link to='/' className="nav-links">Cleans</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -28,6 +29,7 @@ class NavBar extends Component {
                     </Nav>
                     {this.displayLinks()}
                 </Navbar.Collapse>
+                </Container>
             </Navbar>
         )
     }
