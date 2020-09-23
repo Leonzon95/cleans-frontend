@@ -22,4 +22,8 @@ body .nav-links.signup {
     color: white!important;
 }
 
+body .form-check-label {
+    font-weight: bold;
+}
+
 

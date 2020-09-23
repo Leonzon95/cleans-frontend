@@ -9,6 +9,7 @@ import SignUp from './components/registrations/SignUp';
 import NavBar from './components/Navbar'
 import {sendLogIn} from './actions/user';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from 'react-bootstrap';
 
 
 class App extends Component{
@@ -47,6 +48,7 @@ class App extends Component{
       <div>
         <BrowserRouter>
           <NavBar loggedInStatus={this.props.isLoggedIn} />
+          <Container>
           <Switch>
             <Route exact path='/'  render={props => <Home {...props} loggedInStatus={this.props.isLoggedIn} user={this.props.user} />} />
 
@@ -54,6 +56,7 @@ class App extends Component{
 
             <Route exact path='/signup' render={props => <SignUp {...props} loggedInStatus={this.props.isLoggedIn} handleLogin={this.handleLogin} />} />
           </Switch>
+          </Container>
         </BrowserRouter>
       </div>
     )
