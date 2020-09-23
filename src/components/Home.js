@@ -7,9 +7,7 @@ const Home = (props) => {
     if (!props.loggedInStatus){
       return (
         <div>
-          <Link to='/login'>Log In</Link>
-          <br></br>
-          <Link to='/signup'>Sign Up</Link>
+          
         </div>
       );
     } else {

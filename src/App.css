@@ -1,0 +1,25 @@
+body .bg-light {
+    background-color: #bfd9ec!important;
+}
+
+body .signup-bttn{
+    border-radius: 20px;
+    /* padding: 3px 18px !important; */
+}
+
+body .nav-links {
+    text-decoration: none!important;
+    color: #27474c;
+}
+
+
+body .nav-links:hover {
+    text-decoration: none!important;
+    color: #27474c;
+}
+
+body .nav-links.signup {
+    color: white!important;
+}
+
+

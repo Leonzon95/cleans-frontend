@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import './App.css'
 import axios from 'axios';
+import { Container } from 'react-bootstrap';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Home from './components/Home';
 import LogIn from './components/registrations/LogIn';
 import SignUp from './components/registrations/SignUp';
+import NavBar from './components/Navbar'
 import {sendLogIn} from './actions/user';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends Component{
 
@@ -42,6 +47,7 @@ class App extends Component{
     return (
       <div>
         <BrowserRouter>
+          <NavBar loggedInStatus={this.props.isLoggedIn} />
           <Switch>
             <Route exact path='/'  render={props => <Home {...props} loggedInStatus={this.props.isLoggedIn} user={this.props.user} />} />
 
