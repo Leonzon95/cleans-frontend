@@ -5,7 +5,11 @@ import {Link} from 'react-router-dom';
 class NavBar extends Component {
     displayLinks() {
         if(this.props.loggedInStatus){
-
+            return (
+                <Nav>
+                    <Link className="nav-links link" onClick={() => this.props.handleLogout()}>Log out</Link>
+                </Nav>
+            )
         } else {
             return (
                 <Nav>

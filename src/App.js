@@ -7,7 +7,7 @@ import Home from './components/Home';
 import LogIn from './components/registrations/LogIn';
 import SignUp from './components/registrations/SignUp';
 import NavBar from './components/Navbar'
-import {sendLogIn} from './actions/user';
+import {sendLogIn, sendLogOut} from './actions/user';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 
@@ -19,10 +19,7 @@ class App extends Component{
   }
 
   handleLogout = () => {
-    this.setState({
-    isLoggedIn: false,
-    user: {}
-    });
+    this.props.sendLogOut();
   }
 
   loginStatus = () => {
@@ -47,7 +44,7 @@ class App extends Component{
     return (
       <div>
         <BrowserRouter>
-          <NavBar loggedInStatus={this.props.isLoggedIn} />
+          <NavBar loggedInStatus={this.props.isLoggedIn} handleLogout={this.handleLogout} />
           <Container>
           <Switch>
             <Route exact path='/'  render={props => <Home {...props} loggedInStatus={this.props.isLoggedIn} user={this.props.user} />} />
@@ -70,4 +67,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, { sendLogIn })(App);
+export default connect(mapStateToProps, { sendLogIn, sendLogOut })(App);

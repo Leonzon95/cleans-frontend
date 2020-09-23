@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
+import CleanerHome from './CleanerHome';
+import RegUserHome from './RegUserHome';
 
-class LoggedInHome extends Component {
-    
-    render() {
-        return (
-            <div>
-                You are Logged in as {this.props.user.username}
-            </div>
-        )
+const LoggedInHome = props => {
+    if(props.user.isCleaner) {
+        return <CleanerHome user={props.user} />
+    } else {
+        return <RegUserHome user={props.user} />
     }
 }
-
 export default LoggedInHome;

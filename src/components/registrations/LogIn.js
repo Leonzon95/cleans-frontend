@@ -51,7 +51,7 @@ class LogIn extends Component {
         return (
           <div>
             <Alert variant="danger">
-              {this.state.errors.map(error => <li>{error}</li>)}
+              {this.state.errors[0]}
             </Alert>
           </div>
         )
