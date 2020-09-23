@@ -9,7 +9,7 @@ class NavBar extends Component {
         } else {
             return (
                 <Nav>
-                <Nav.Link><Link to='/login' className="nav-links">Log In</Link></Nav.Link>
+                <Nav><Link to='/login' className="nav-links link">Log In</Link></Nav>
                 <Button variant="info" className="signup-bttn" ><Link to='/signup' className="nav-links signup">Sign Up</Link></Button>
                 </Nav>
             )

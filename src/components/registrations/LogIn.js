@@ -1,6 +1,6 @@
 import React,  { Component } from 'react';
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Form, Col, Button, Alert, Row } from 'react-bootstrap';
 
 class LogIn extends Component {
   
@@ -50,9 +50,9 @@ class LogIn extends Component {
     handleErrors = () => {
         return (
           <div>
-            <ul>
-            {this.state.errors.map(error =>  <li key={error}>{error}</li>)}
-            </ul>
+            <Alert variant="danger">
+              {this.state.errors.map(error => <li>{error}</li>)}
+            </Alert>
           </div>
         )
     }
@@ -62,33 +62,28 @@ class LogIn extends Component {
 
         return (
             <div>
-                <h1>Log In</h1>
-                <div>
+                <Row>
+                  <Col md={{ span: 6, offset: 3 }}>
+                    <h1>Log In</h1>
                     {this.state.errors ? this.handleErrors() : null}
-                </div>
-                <form onSubmit={this.handleSubmit}>
-                <input
-                    placeholder="username"
-                    type="text"
-                    name="username"
-                    value={username}
-                    onChange={this.handleChange}
-                />
-                <input
-                    placeholder="password"
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={this.handleChange}
-                />
-                <button placeholder="submit" type="submit">
-                    Log In
-                </button>
-                <div>
-                    or <Link to='/signup'>sign up</Link>
-                </div>
-                </form>
+                    <Form onSubmit={this.handleSubmit}>
+                      <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control  placeholder="Enter username" name="username" value={username} onChange={this.handleChange} />
+                      </Form.Group>
+
+                      <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange}/>
+                      </Form.Group>
+            
+                      <Button variant="primary" type="submit">
+                        Log In
+                      </Button>
                 
+                    </Form>
+                  </Col>
+                </Row>
             </div>
         );
     }

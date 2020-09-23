@@ -4,11 +4,12 @@ body .bg-light {
 
 body .signup-bttn{
     border-radius: 20px;
-    /* padding: 3px 18px !important; */
 }
 
 body .nav-links {
     text-decoration: none!important;
+    box-sizing: border-box;
+    display: block;
     color: #27474c;
 }
 
@@ -24,6 +25,14 @@ body .nav-links.signup {
 
 body .form-check-label {
     font-weight: bold;
+}
+
+body .nav-links.link{
+    padding-right: .5rem;
+    padding-left: .5rem;
+    padding: .5rem 1rem;
+    display: block;
+    box-sizing: border-box;
 }
 
 
