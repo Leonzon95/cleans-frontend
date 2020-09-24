@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button, Container } from 'react-bootstrap';
+import { Navbar, Nav, Button, Container} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 class NavBar extends Component {
-    displayLinks() {
-        if(this.props.loggedInStatus){
+    displayRightLinks() {
+        if(this.props.loggedInStatus && !this.props.user.isCleaner){
             return (
                 <Nav>
-                    <Link className="nav-links link" onClick={() => this.props.handleLogout()}>Log out</Link>
+                    
+                    <Nav className="nav-links link" onClick={() => this.props.handleLogout()}>Log out</Nav>
                 </Nav>
             )
         } else {
@@ -20,6 +21,25 @@ class NavBar extends Component {
         }
     }
 
+    displayLeftLinks() {
+        if(this.props.loggedInStatus && !this.props.user.isCleaner){
+            return(
+            <Nav className="mr-auto">
+                <Nav><Link to='/addresses' className="nav-links link">My Adresses</Link></Nav>
+                <Nav.Link href="#link">Link</Nav.Link>
+            </Nav>
+            )
+        } else if (this.props.loggedInStatus && this.props.user.isCleaner){
+
+        } else {
+            return (
+            <Nav className="mr-auto">
+                
+            </Nav>
+            )
+        }
+    }
+
     render() {
         return (
             <Navbar bg="light" expand="lg" >
@@ -27,11 +47,8 @@ class NavBar extends Component {
                 <Navbar.Brand ><Link to='/' className="nav-links">Cleans</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
-                    </Nav>
-                    {this.displayLinks()}
+                    {this.displayLeftLinks()}
+                    {this.displayRightLinks()}
                 </Navbar.Collapse>
                 </Container>
             </Navbar>

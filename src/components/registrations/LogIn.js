@@ -10,7 +10,7 @@ class LogIn extends Component {
       errors: ''
     };
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         return this.props.loggedInStatus ? this.redirect() : null
     }
 

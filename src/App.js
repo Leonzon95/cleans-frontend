@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css'
 import axios from 'axios';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Home from './components/Home';
 import LogIn from './components/registrations/LogIn';
@@ -43,18 +43,18 @@ class App extends Component{
   render() {
     return (
       <div>
-        <BrowserRouter>
-          <NavBar loggedInStatus={this.props.isLoggedIn} handleLogout={this.handleLogout} />
+        <Router>
+          <NavBar loggedInStatus={this.props.isLoggedIn} handleLogout={this.handleLogout} user={this.props.user} />
           <Container>
           <Switch>
-            <Route exact path='/'  render={props => <Home {...props} loggedInStatus={this.props.isLoggedIn} user={this.props.user} />} />
-
             <Route exact path='/login' render={props => <LogIn {...props} loggedInStatus={this.props.isLoggedIn} handleLogin={this.handleLogin} />} />
 
             <Route exact path='/signup' render={props => <SignUp {...props} loggedInStatus={this.props.isLoggedIn} handleLogin={this.handleLogin} />} />
+
+            <Route path='/'  render={props => <Home {...props} loggedInStatus={this.props.isLoggedIn} user={this.props.user} />} />
           </Switch>
           </Container>
-        </BrowserRouter>
+        </Router>
       </div>
     )
   }

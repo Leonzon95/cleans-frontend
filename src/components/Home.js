@@ -7,7 +7,7 @@ const Home = (props) => {
     if (!props.loggedInStatus){
       return <HomePage />;
     } else {
-      return <LoggedInHome user={props.user} />
+      return <LoggedInHome user={props.user} />;
     }
   };
   export default Home;

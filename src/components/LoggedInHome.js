@@ -1,12 +1,12 @@
 import React from 'react';
 import CleanerHome from './CleanerHome';
-import RegUserHome from './RegUserHome';
+import RegUserRoutes from './RegUserRoutes';
 
 const LoggedInHome = props => {
     if(props.user.isCleaner) {
         return <CleanerHome user={props.user} />
     } else {
-        return <RegUserHome user={props.user} />
+        return <RegUserRoutes user={props.user} />
     }
 }
 export default LoggedInHome;
