@@ -40,15 +40,22 @@ body .collapse-toggle {
     border-color: transparent!important;
 }
 
-body .new-job-form {
-    float: right;
+body .padd-top {
     padding-top: 5px;
 }
 
-/* body .border-form {
-    padding: 0.01em 16px;
-    border: 1px solid #ccc;
-    border-color: black;
-} */
+body .padd-top.float-right {
+    float: right;
+}
 
+body .bttn-link {
+    text-decoration: none!important;
+    color: white;
+}
+
+
+body .bttn-link:hover {
+    text-decoration: none!important;
+    color: white;
+}
 

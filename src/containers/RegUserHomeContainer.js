@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Col, Row, Nav} from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import NewJob from '../components/NewJob'
-import {Route} from 'react-router-dom';
 
 class RegUserHomeContainer extends Component {
     state = {
