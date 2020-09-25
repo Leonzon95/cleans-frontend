@@ -14,7 +14,7 @@ class RegUserHomeContainer extends Component {
             return (
                 <div>
                     <Button variant="info" className="signup-bttn job" onClick={()=> this.setState({showForm: false})} >Close</Button>
-                    <NewJob user={this.props.user} addJob={this.props.addJob} />
+                    <NewJob user={this.props.user} addJob={this.props.addJob} addresses={this.props.addresses} />
                 </div>
             )
         }

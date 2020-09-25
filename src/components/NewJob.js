@@ -7,7 +7,8 @@ class NewJob extends Component {
         description: '',
         estimated_time: '',
         date: '',
-        time: ''
+        time: '',
+        address_id: ''
     }
 
     handleChange = (event) => {
@@ -19,12 +20,13 @@ class NewJob extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const { description, estimated_time, date,time } = this.state
+        const { description, estimated_time, date, time, address_id } = this.state
         console.log(this.state)
         const job ={
             description,
             estimated_time,
-            date: `${date} ${time}`
+            date: `${date} ${time}`,
+            address_id
         };
         axios.post(`http://localhost:3001/users/${this.props.user.id}/jobs`,{job} ,{withCredentials: true})
         .then(response => {
@@ -35,10 +37,18 @@ class NewJob extends Component {
             description: '',
             estimated_time: '',
             date: '',
-            time: ''
+            time: '',
+            address_id: ''
         });
     }
     
+    addressSelect() {
+        return this.props.addresses.map(address => {
+            return (
+                <option value={address.id} >{address.name}</option>
+            )
+        })
+    }
 
     render() {
         const { description, estimated_time, date,time } = this.state;
@@ -54,12 +64,19 @@ class NewJob extends Component {
                     <Form.Label>Estimated work time</Form.Label>
                     <Form.Control type="text" placeholder="Ex. 3hrs" required onChange={this.handleChange} value={estimated_time} name="estimated_time" />
                 </Form.Group>
+
                 <Form.Group controlId="validationCustom04">
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date" placeholder="Ex. 3hrs" required onChange={this.handleChange} value={date} name="date" />
                 </Form.Group>
                 <Form.Group controlId="validationCustom04">
                     <Form.Control type="time" placeholder="Ex. 3hrs" required onChange={this.handleChange} value={time} name="time" />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>Select Address</Form.Label>
+                    <Form.Control name="address_id" as="select" onChange={this.handleChange} >
+                        {this.addressSelect()}
+                    </Form.Control>
                 </Form.Group>
                 <Form.Group controlId="validationCustom04">
                     <Button type="submit">Submit</Button>

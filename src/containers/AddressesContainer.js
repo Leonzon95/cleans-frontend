@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, Container } from 'react-bootstrap';
+import { Row, Col, Button, Container, Spinner } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Switch, Route, Link } from 'react-router-dom'
 import NewAddress from '../components/NewAddress'
@@ -15,14 +15,23 @@ class AddressesContainer extends Component {
         })
     }
 
+    displayLoading() {
+        console.log("jello")
+        return (
+            <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+            </Spinner>
+        )
+    }
+
     render(){
-        const {match, user, addAddress } =this.props;
+        const {match, user, addAddress, isLoading } = this.props;
         return (
             <Container>
                 <Row >
                     <Col className="padd-top">
                         <ul>
-                            {this.displayAddresses()}
+                            {isLoading ?  this.displayLoading() : this.displayAddresses()}
                         </ul>
                     </Col>  
 

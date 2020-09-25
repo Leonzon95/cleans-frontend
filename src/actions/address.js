@@ -7,7 +7,6 @@ export const fetchAddresses = (userId) => {
         dispatch({ type: 'LOADING_ADDRESSES'})
         axios.get(`http://localhost:3001/users/${userId}/addresses` ,{withCredentials: true})
         .then(response => {
-            console.log(response)
             dispatch({type: "ADD_ADDRESSES", addresses: response.data.addresses});
           })
         .catch(error => console.log('api errors:', error));
