@@ -3,10 +3,13 @@ import RegUserHomeContainer from '../containers/RegUserHomeContainer'
 import { Route, Switch } from 'react-router-dom';
 import AddressesContainer from './AddressesContainer'
 import { connect } from 'react-redux';
-import { addAddress } from '../actions/address'
+import { addAddress, fetchAddresses } from '../actions/address'
 import { addJob } from '../actions/job'
 
 class RegUserRoutesContainer extends Component{
+    componentDidMount() {
+        this.props.fetchAddresses();
+    }
 
     render() {
         const {user, addresses, jobs, addAddress, addJob} = this.props;
@@ -25,7 +28,7 @@ class RegUserRoutesContainer extends Component{
 const mapStateToProps = state => {
     return {
         jobs: state.jobs,
-        addresses: state.addresses
+        addresses: state.addresses.data
     }
 }
-export default connect(mapStateToProps, { addAddress, addJob })(RegUserRoutesContainer);
+export default connect(mapStateToProps, { addAddress, addJob, fetchAddresses })(RegUserRoutesContainer);

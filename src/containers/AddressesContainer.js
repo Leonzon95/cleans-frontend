@@ -5,15 +5,17 @@ import { Switch, Route, Link } from 'react-router-dom'
 import NewAddress from '../components/NewAddress'
 
 class AddressesContainer extends Component {
-    
+    displayAddresses() {
+        
+    }
 
     render(){
-        const {match, user, addAddress, addresses} =this.props;
+        const {match, user, addAddress } =this.props;
         return (
             <Container>
                 <Row >
                     <Col className="padd-top">
-                        Hello
+                        {displayAddresses()}
                     </Col>  
                     <Col className="padd-top" >
                         <Button variant="info" className="signup-bttn job padd-top float-right" ><Link to="/addresses/new" className="bttn-link">New Address</Link></Button>
