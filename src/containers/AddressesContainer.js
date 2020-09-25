@@ -6,7 +6,13 @@ import NewAddress from '../components/NewAddress'
 
 class AddressesContainer extends Component {
     displayAddresses() {
-        
+        return this.props.addresses.map(address => {
+            return (
+                <li>
+                    {address.name}
+                </li>
+            )
+        })
     }
 
     render(){
@@ -15,8 +21,11 @@ class AddressesContainer extends Component {
             <Container>
                 <Row >
                     <Col className="padd-top">
-                        {displayAddresses()}
+                        <ul>
+                            {this.displayAddresses()}
+                        </ul>
                     </Col>  
+
                     <Col className="padd-top" >
                         <Button variant="info" className="signup-bttn job padd-top float-right" ><Link to="/addresses/new" className="bttn-link">New Address</Link></Button>
                         <Switch>

@@ -27,7 +27,7 @@ class NewAddress extends Component {
         axios.post(`http://localhost:3001/users/${this.props.user.id}/addresses`,{address} ,{withCredentials: true})
         .then(response => {
             if(!response.data.errors) {
-                this.props.addAddress(response.data);
+                this.props.addAddress(response.data.address);
                 this.setState({
                     name: '',
                     country: '',
