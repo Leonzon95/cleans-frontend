@@ -15,7 +15,7 @@ import { Container } from 'react-bootstrap';
 class App extends Component{
 
   handleLogin = (data) => {
-    this.props.sendLogIn(data);
+    this.props.sendLogIn(data.user);
   }
 
   handleLogout = () => {
@@ -63,7 +63,7 @@ class App extends Component{
 const mapStateToProps = state => {
   return {
     isLoggedIn: state.user.isLoggedIn,
-    user: state.user.user.user
+    user: state.user.user
   };
 }
 
