@@ -4,7 +4,6 @@ import jobs from './jobs'
 import addresses from './addresses'
 
 const rootReducer = combineReducers({
-    
     user,
     jobs,
     addresses

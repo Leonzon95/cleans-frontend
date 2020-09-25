@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Col, Row, Container, Spinner } from 'react-bootstrap';
 import NewJob from '../components/NewJob'
+import Job from '../components/Job'
 import { Route, Switch, Link } from 'react-router-dom';
 
 class RegUserHomeContainer extends Component {
@@ -11,9 +12,10 @@ class RegUserHomeContainer extends Component {
     displayJobs() {
         console.log(this.props.jobs)
         return this.props.jobs.map(job => {
+            const address = this.props.addresses.find(address => address.id === job.addressId)
             return(
                 <div>
-                    {job.description}
+                    {<Job address={address} job={job}/>}
                     <br></br>
                 </div>
             )
