@@ -45,7 +45,7 @@ class NewJob extends Component {
     addressSelect() {
         return this.props.addresses.map(address => {
             return (
-                <option value={address.id} >{address.name}</option>
+                <option value={address.id} key={address.id}>{address.name}</option>
             )
         })
     }
