@@ -25,18 +25,23 @@ class NewJob extends Component {
             description,
             estimated_time,
             date: `${date} ${time}`
-        }
+        };
         axios.post(`http://localhost:3001/users/${this.props.user.id}/jobs`,{job} ,{withCredentials: true})
         .then(response => {
-            this.props.addJob(response.data)
-            this.redirect();
+            this.props.addJob(response.data);
           })
-        .catch(error => console.log('api errors:', error))
+        .catch(error => console.log('api errors:', error));
+        this.setState({
+            description: '',
+            estimated_time: '',
+            date: '',
+            time: ''
+        });
     }
     
 
     render() {
-        const { description, estimated_time, date,time } = this.state
+        const { description, estimated_time, date,time } = this.state;
         return (
             <Form className="border-form" onSubmit={this.handleSubmit}>
                 <h4>New Job</h4>

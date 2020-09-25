@@ -8,6 +8,7 @@ class AddressesContainer extends Component {
     
 
     render(){
+        const {match, user, addAddress, addresses} =this.props;
         return (
             <Container>
                 <Row >
@@ -17,7 +18,7 @@ class AddressesContainer extends Component {
                     <Col className="padd-top" >
                         <Button variant="info" className="signup-bttn job padd-top float-right" ><Link to="/addresses/new" className="bttn-link">New Address</Link></Button>
                         <Switch>
-                            <Route exact path={`${this.props.match.url}/new`} render={routerProps => <NewAddress user={this.props.user} />} />
+                            <Route exact path={`${match.url}/new`} render={routerProps => <NewAddress user={user} addAddress={addAddress} />} />
                         </Switch>
                     </Col>
                 </Row>

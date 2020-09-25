@@ -1,1 +1,1 @@
-export const addJob = (job) => ( { type: "LOGIN", job: job } );
+export const addJob = (job) => ( { type: "ADD_JOB", job: job } );
