@@ -20,14 +20,14 @@ class NewAddress extends Component {
         });
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
         const { name, country, state, zipcode, city, street_address } = this.state;
         const address = {name , country, state, zipcode, city, street_address};
         axios.post(`http://localhost:3001/users/${this.props.user.id}/addresses`,{address} ,{withCredentials: true})
         .then(response => {
             if(!response.data.errors) {
                 this.props.addAddress(response.data);
-                console.log(response.data)
                 this.setState({
                     name: '',
                     country: '',
