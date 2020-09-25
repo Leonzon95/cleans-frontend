@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Row, Container } from 'react-bootstrap';
+import { Button, Col, Row, Container, Spinner } from 'react-bootstrap';
 import NewJob from '../components/NewJob'
 import { Route, Switch, Link } from 'react-router-dom';
 
@@ -8,36 +8,34 @@ class RegUserHomeContainer extends Component {
         showForm: false
     }
 
-    // displayForm() {
-    //     if(!this.state.showForm) {
-    //         return <Button variant="info" className="signup-bttn job" onClick={()=> this.setState({showForm: true})} >Post a Job</Button>
-    //     } else {
-    //         return (
-    //             <div>
-    //                 <Button variant="info" className="signup-bttn job" onClick={()=> this.setState({showForm: false})} >Close</Button>
-    //                 <NewJob user={this.props.user} addJob={this.props.addJob} addresses={this.props.addresses} />
-    //             </div>
-    //         )
-    //     }
-    // }
+    displayJobs() {
+        console.log(this.props.jobs)
+        return this.props.jobs.map(job => {
+            return(
+                <div>
+                    {job.description}
+                    <br></br>
+                </div>
+            )
+        })
+    }
+
+    displayLoading() {
+        console.log("jello")
+        return (
+            <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+            </Spinner>
+        )
+    }
 
     render() {
         return (
             <div>
-                {/* <Row>
-                    <Col>
-                        <h3>Welcome {this.props.user.firstName}!</h3>
-                    </Col>
-                    <Col md={{ span: 4, offset: 4 }} className="new-job-form">
-                        {this.displayForm()}
-                    </Col>
-                </Row> */}
                 <Container>
                 <Row >
-                    <Col className="padd-top">
-                        <ul>
-                            {/* {isLoading ?  this.displayLoading() : this.displayJobs()} */}
-                        </ul>
+                    <Col className="padd-top">    
+                        {this.props.isLoading ?  this.displayLoading() : this.displayJobs()}
                     </Col>  
 
                     <Col className="padd-top" >

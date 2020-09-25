@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Form, Button} from 'react-bootstrap';
+import { Form, Button, Alert} from 'react-bootstrap';
 import axios from 'axios';
 
 class NewJob extends Component {
@@ -30,7 +30,13 @@ class NewJob extends Component {
         };
         axios.post(`http://localhost:3001/users/${this.props.user.id}/jobs`,{job} ,{withCredentials: true})
         .then(response => {
-            this.props.addJob(response.data);
+            if(!response.data.errors) {
+                this.props.addJob(response.data.job);
+            } else {
+                this.setState({
+                    errors: response.data.errors
+                })
+            }
           })
         .catch(error => console.log('api errors:', error));
         this.setState({
@@ -50,9 +56,21 @@ class NewJob extends Component {
         })
     }
 
+    handleErrors = () => {
+        return (
+          <div>
+            <Alert variant="danger">
+            {this.state.errors.map(error => <li>{error}</li>)}
+            </Alert>
+          </div>
+        );
+    }
+
     render() {
         const { description, estimated_time, date,time } = this.state;
         return (
+            <div>
+            {this.state.errors ? this.handleErrors() : null}
             <Form className="border-form" onSubmit={this.handleSubmit}>
                 <h4>New Job</h4>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -75,6 +93,7 @@ class NewJob extends Component {
                 <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Label>Select Address</Form.Label>
                     <Form.Control name="address_id" as="select" onChange={this.handleChange} >
+                        <option>Select Address</option>
                         {this.addressSelect()}
                     </Form.Control>
                 </Form.Group>
@@ -82,6 +101,7 @@ class NewJob extends Component {
                     <Button type="submit">Submit</Button>
                 </Form.Group>
             </Form>
+            </div>
         )
     }
 }
