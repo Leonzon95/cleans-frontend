@@ -19,10 +19,14 @@ class NewAddress extends Component {
         });
     }
 
+    handleSubmit() {
+        
+    }
+
     render() {
         const { name, country, state, zipcode, city, street_address } = this.state;
         return (
-            <Form className="padd-top">
+            <Form className="padd-top" onSubmit={this.handleSubmit}>
                 <Form.Group controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
                     <Form.Control name="name" value={name} placeholder="Ex. Mom's house" onChange={this.handleChange} />
