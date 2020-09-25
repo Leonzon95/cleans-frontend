@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Alert } from 'react-bootstrap'
+import axios from 'axios'
 
 class NewAddress extends Component {
     state = {
@@ -19,13 +20,47 @@ class NewAddress extends Component {
         });
     }
 
-    handleSubmit() {
-        
+    handleSubmit = () => {
+        const { name, country, state, zipcode, city, street_address } = this.state;
+        const address = {name , country, state, zipcode, city, street_address};
+        axios.post(`http://localhost:3001/users/${this.props.user.id}/addresses`,{address} ,{withCredentials: true})
+        .then(response => {
+            if(!response.data.errors) {
+                this.props.addAddress(response.data);
+                console.log(response.data)
+                this.setState({
+                    name: '',
+                    country: '',
+                    state: '',
+                    zipcode: '',
+                    city: '',
+                    street_address: '',  
+                    errors: ''
+                })
+            } else {
+                this.setState({
+                    errors: response.data.errors
+                })
+            }
+          })
+        .catch(error => console.log('api errors:', error));
+    }
+
+    handleErrors = () => {
+        return (
+          <div>
+            <Alert variant="danger">
+            {this.state.errors.map(error => <li>{error}</li>)}
+            </Alert>
+          </div>
+        );
     }
 
     render() {
         const { name, country, state, zipcode, city, street_address } = this.state;
         return (
+            <div>
+            {this.state.errors ? this.handleErrors() : null}
             <Form className="padd-top" onSubmit={this.handleSubmit}>
                 <Form.Group controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
@@ -66,6 +101,7 @@ class NewAddress extends Component {
                 
                 <Button variant="primary" type="submit">Submit</Button>
             </Form>
+            </div>
         )
     }
 }
