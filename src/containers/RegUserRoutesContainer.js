@@ -17,8 +17,8 @@ class RegUserRoutesContainer extends Component{
         return (
             <div>
                 <Switch>
-                    <Route path="/addresses" render={(routerProps) => <AddressesContainer {...routerProps} user={user}  addresses={addresses} addAddress={addAddress} isLoading={isAddressesLoading} /> } />
-                    <Route extact path="/" render={(routerProps) => <RegUserHomeContainer {...routerProps} user={user}  addresses={addresses} jobs={jobs} addJob={addJob} isLoading={isJobsLoading} /> } />
+                    <Route path="/addresses" render={(routerProps) => <AddressesContainer {...routerProps} user={user}  addresses={addresses} addAddress={addAddress} isLoading={isJobsLoading || isAddressesLoading} /> } />
+                    <Route extact path="/" render={(routerProps) => <RegUserHomeContainer {...routerProps} user={user}  addresses={addresses} jobs={jobs} addJob={addJob} isLoading={isJobsLoading || isAddressesLoading} /> } />
                 </Switch>
             </div>
         )
