@@ -12,3 +12,14 @@ export const fetchJobs = (userId) => {
         .catch(error => console.log('api errors:', error));
     }
 }
+
+export const fetchAllJobs = () => {
+    return dispatch => {
+        dispatch({ type: 'LOADING_JOBS'})
+        axios.get(`http://localhost:3001/jobs` ,{withCredentials: true})
+        .then(response => {
+            dispatch({type: "ADD_JOBS", jobs: response.data.jobs});
+          })
+        .catch(error => console.log('api errors:', error));
+    }
+}

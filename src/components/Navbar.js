@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 class NavBar extends Component {
     displayRightLinks() {
-        if(this.props.loggedInStatus && !this.props.user.isCleaner){
+        if(this.props.loggedInStatus){
             return (
                 <Nav>
                     
@@ -14,8 +14,8 @@ class NavBar extends Component {
         } else {
             return (
                 <Nav>
-                <Nav><Link to='/login' className="nav-links link">Log In</Link></Nav>
-                <Button variant="info" className="signup-bttn" ><Link to='/signup' className="nav-links signup">Sign Up</Link></Button>
+                    <Nav><Link to='/login' className="nav-links link">Log In</Link></Nav>
+                    <Button variant="info" className="signup-bttn" ><Link to='/signup' className="nav-links signup">Sign Up</Link></Button>
                 </Nav>
             )
         }
@@ -30,7 +30,11 @@ class NavBar extends Component {
             </Nav>
             )
         } else if (this.props.loggedInStatus && this.props.user.isCleaner){
-
+            return (
+            <Nav className="mr-auto">
+                <Nav.Link href="#link">Link</Nav.Link>
+            </Nav>
+            )
         } else {
             return (
             <Nav className="mr-auto">

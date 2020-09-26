@@ -16,7 +16,9 @@ class RegUserRoutesContainer extends Component{
         const {user, addresses, jobs, addAddress, addJob, isAddressesLoading, isJobsLoading} = this.props;
         return (
             <div>
+                <h2>Welcome {user.firstName}!</h2>
                 <Switch>
+                    
                     <Route path="/addresses" render={(routerProps) => <AddressesContainer {...routerProps} user={user}  addresses={addresses} addAddress={addAddress} isLoading={isJobsLoading || isAddressesLoading} /> } />
                     <Route extact path="/" render={(routerProps) => <RegUserHomeContainer {...routerProps} user={user}  addresses={addresses} jobs={jobs} addJob={addJob} isLoading={isJobsLoading || isAddressesLoading} /> } />
                 </Switch>

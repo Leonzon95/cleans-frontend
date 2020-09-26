@@ -10,12 +10,10 @@ class RegUserHomeContainer extends Component {
     }
 
     displayJobs() {
-        console.log(this.props.addresses)
         return this.props.jobs.map(job => {
             const address = this.props.addresses.find(address => address.id === job.addressId)
-            console.log(address)
             return(
-                <div>
+                <div key={job.id}>
                     {<Job address={address} job={job}/>}
                     <br></br>
                 </div>

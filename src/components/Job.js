@@ -4,7 +4,7 @@ import { Card, Button } from 'react-bootstrap'
 const  Job = props => {
     const { job, address } = props;
     return (
-        <Card>
+        <Card id={job.id}>
             <Card.Body>
                 <Card.Title as="h5">{job.description}</Card.Title>
                 <Card.Text>
