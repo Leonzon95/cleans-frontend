@@ -11,12 +11,12 @@ class CleanerRoutesContainer extends Component {
     }
 
     render() {
-        const { user, jobs } = this.props
+        const { user, jobs, isJobsLoading } = this.props
         return (
             <div>
                 <h2>Welcome {user.firstName}!</h2>
                 <Switch>
-                    <Route exact path="/" render={routerProps => <CleanerHomeContainer {...routerProps} jobs={jobs} user={user}/>} />
+                    <Route exact path="/" render={routerProps => <CleanerHomeContainer {...routerProps} jobs={jobs} user={user} isLoading={isJobsLoading}/>} />
                 </Switch>
             </div>
         )
@@ -25,7 +25,8 @@ class CleanerRoutesContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        jobs: state.jobs.data
+        jobs: state.jobs.data,
+        isJobsLoading: state.jobs.loading
     }
 }
 

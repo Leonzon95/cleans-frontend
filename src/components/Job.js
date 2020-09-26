@@ -1,8 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, Button } from 'react-bootstrap'
 
 const  Job = props => {
-    const { job, address } = props;
+    const { job, address, user } = props;
+
+    const displayButtons = () => {
+        if (user.isCleaner) {
+            return (
+                <Button variant="primary">Apply for job</Button>
+            )
+        } else {
+            return (
+                <Button variant="primary">Go somewhere</Button>
+            )
+        }
+    }
     return (
         <Card id={job.id}>
             <Card.Body>
@@ -16,7 +28,7 @@ const  Job = props => {
                     {address.streetAddress}<br></br>
                     {address.city}, {address.state} {address.country} {address.zipcode}
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+               
             </Card.Body>
         </Card>
     )

@@ -14,7 +14,7 @@ class RegUserHomeContainer extends Component {
             const address = this.props.addresses.find(address => address.id === job.addressId)
             return(
                 <div key={job.id}>
-                    {<Job address={address} job={job}/>}
+                    {<Job address={address} job={job} user={this.props.user} />}
                     <br></br>
                 </div>
             )
@@ -22,7 +22,6 @@ class RegUserHomeContainer extends Component {
     }
 
     displayLoading() {
-        console.log("jello")
         return (
             <Spinner animation="border" role="status">
                 <span className="sr-only">Loading...</span>
