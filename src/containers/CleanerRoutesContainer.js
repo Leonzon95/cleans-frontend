@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 class CleanerRoutesContainer extends Component {
 
     componentDidMount() {
+        console.log("inClesnerConte")
         this.props.fetchAllJobs();
     }
 

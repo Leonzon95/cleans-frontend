@@ -4,7 +4,7 @@ import CleanerRoutesContainer from '../containers/CleanerRoutesContainer';
 
 
 const LoggedInHome = props => {
-    if(props.user.isCleaner) {
+    if(props.isCleaner) {
         return <CleanerRoutesContainer user={props.user} />
     } else {
         return <RegUserRoutesContainer user={props.user} />

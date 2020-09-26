@@ -3,9 +3,12 @@ function jobs(state={loading: true, data: []}, action) {
         case "LOADING_JOBS":
             return {loading: true, data: state.data}
         case "ADD_JOBS":
+            console.log(action.jobs)
             return {loading: false, data: [...action.jobs]}
         case "ADD_JOB":
             return {loading: false, data: [...state.data, action.job]};
+        case "LOGOUT": 
+            return {loading: false, data: []}
         default:
             return state;
     }

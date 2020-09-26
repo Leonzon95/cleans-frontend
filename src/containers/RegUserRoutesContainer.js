@@ -8,6 +8,7 @@ import { addJob, fetchJobs } from '../actions/job'
 
 class RegUserRoutesContainer extends Component{
     componentDidMount() {
+        console.log("inRegUserCont")
         this.props.fetchAddresses(this.props.user.id);
         this.props.fetchJobs(this.props.user.id);
     }

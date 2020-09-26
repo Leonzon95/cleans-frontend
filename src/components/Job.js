@@ -28,7 +28,7 @@ const  Job = props => {
                     {address.streetAddress}<br></br>
                     {address.city}, {address.state} {address.country} {address.zipcode}
                 </Card.Text>
-               
+               {displayButtons()}
             </Card.Body>
         </Card>
     )
