@@ -23,3 +23,13 @@ export const fetchAllJobs = () => {
         .catch(error => console.log('api errors:', error));
     }
 }
+
+export const applyToJob = (userId ,jobId) => {
+    return dispatch => {
+        axios.post(`http://localhost:3001/jobs/` ,{withCredentials: true})
+        .then(response => {
+            dispatch({type: "APPLY_FOR_JOB", jobId, userId});
+          })
+        .catch(error => console.log('api errors:', error));
+    }
+}

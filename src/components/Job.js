@@ -7,7 +7,7 @@ const  Job = props => {
     const displayButtons = () => {
         if (user.isCleaner) {
             return (
-                <Button variant="primary">Apply for job</Button>
+                <Button variant="primary" onClick={} >Apply for job</Button>
             )
         } else {
             return (
