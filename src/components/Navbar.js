@@ -8,7 +8,7 @@ class NavBar extends Component {
             return (
                 <Nav>
                     
-                    <Nav className="nav-links link" onClick={() => this.props.handleLogout()}>Log out</Nav>
+                    <Nav.Link className="nav-links link" onClick={() => this.props.handleLogout()}>Log out</Nav.Link>
                 </Nav>
             )
         } else {
@@ -32,7 +32,7 @@ class NavBar extends Component {
         } else if (this.props.loggedInStatus && this.props.user.isCleaner){
             return (
             <Nav className="mr-auto">
-                <Nav.Link href="#link">Link</Nav.Link>
+                <Nav><Link to='/applied-jobs' className="nav-links link">Applied Jobs</Link></Nav>
             </Nav>
             )
         } else {
