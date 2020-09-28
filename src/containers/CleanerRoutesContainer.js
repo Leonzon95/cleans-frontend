@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import CleanerHomeContainer from './CleanerHomeContainer';
-import { fetchAllJobs } from '../actions/job';
+import { fetchAllJobs, applyToJob } from '../actions/job';
 import { connect } from 'react-redux';
 
 class CleanerRoutesContainer extends Component {
@@ -11,12 +11,12 @@ class CleanerRoutesContainer extends Component {
     }
 
     render() {
-        const { user, jobs, isJobsLoading } = this.props
+        const { user, jobs, isJobsLoading, applyToJob } = this.props
         return (
             <div>
                 <h2>Welcome {user.firstName}!</h2>
                 <Switch>
-                    <Route exact path="/" render={routerProps => <CleanerHomeContainer {...routerProps} jobs={jobs} user={user} isLoading={isJobsLoading}/>} />
+                    <Route exact path="/" render={routerProps => <CleanerHomeContainer {...routerProps} jobs={jobs} user={user} isLoading={isJobsLoading} applyToJob={applyToJob}/>} />
                 </Switch>
             </div>
         )
@@ -30,4 +30,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchAllJobs })(CleanerRoutesContainer);
+export default connect(mapStateToProps, { fetchAllJobs, applyToJob })(CleanerRoutesContainer);

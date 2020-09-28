@@ -7,7 +7,7 @@ class CleanerHomeContainer extends Component {
         return this.props.jobs.map(job => {
             return(
                 <div key={job.id}>
-                    {<Job job={job} address={job.address} user={this.props.user} />}
+                    {<Job job={job} address={job.address} user={this.props.user} applyToJob={this.props.applyToJob}/>}
                     <br></br>
                 </div>
             )

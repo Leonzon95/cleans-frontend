@@ -26,9 +26,9 @@ export const fetchAllJobs = () => {
 
 export const applyToJob = (userId ,jobId) => {
     return dispatch => {
-        axios.post(`http://localhost:3001/jobs/` ,{withCredentials: true})
+        axios.post(`http://localhost:3001/users/${userId}/applications`,{job_id: jobId} , {withCredentials: true})
         .then(response => {
-            dispatch({type: "APPLY_FOR_JOB", jobId, userId});
+            dispatch({type: "APPLY_FOR_JOB", jobId, user: response.data.user });
           })
         .catch(error => console.log('api errors:', error));
     }
