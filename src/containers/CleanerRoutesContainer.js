@@ -10,8 +10,13 @@ class CleanerRoutesContainer extends Component {
         this.props.fetchAllJobs();
     }
 
+    filterJobs() {
+       
+    }
+
     render() {
         const { user, jobs, isJobsLoading, applyToJob } = this.props
+        // debugger
         return (
             <div>
                 <h2>Welcome {user.firstName}!</h2>
@@ -24,8 +29,37 @@ class CleanerRoutesContainer extends Component {
 }
 
 const mapStateToProps = state => {
+    const user = state.user.user;
+    const jobs = [];
+    const appliedJobs = [];
+    const pendingJobs = [];
+    const completedJobs = [];
+    for (const job of state.jobs.data) {
+        if (job.hiredCleanerId === user.id) {
+            if (job.status === "pending"){
+                pendingJobs.push(job);
+                continue;
+            } else {
+                completedJobs.push(job);
+                continue;
+            }
+        } else if (job.status === "new"){
+            let isAnApplicant = false;
+            for (const applicant of job.applicants) {
+                if (applicant.id === user.id) {
+                    appliedJobs.push(job)
+                    isAnApplicant = true;
+                    break;
+                }
+            }
+            if(!isAnApplicant) jobs.push(job);
+        }
+    }
     return {
-        jobs: state.jobs.data,
+        jobs: jobs,
+        appliedJobs: appliedJobs,
+        pendingJobs: pendingJobs,
+        completedJobs: completedJobs,
         isJobsLoading: state.jobs.loading
     }
 }
