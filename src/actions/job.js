@@ -33,3 +33,4 @@ export const applyToJob = (userId ,jobId) => {
         .catch(error => console.log('api errors:', error));
     }
 }
+

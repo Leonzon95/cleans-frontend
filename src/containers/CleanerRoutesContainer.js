@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import CleanerHomeContainer from './CleanerHomeContainer';
 import CleanerAppliedJobsContainer from './CleanerAppliedJobsContainer'
 import { fetchAllJobs, applyToJob } from '../actions/job';
+import { updateHourlyRate } from '../actions/user'
 import { connect } from 'react-redux';
 
 class CleanerRoutesContainer extends Component {
@@ -10,13 +11,16 @@ class CleanerRoutesContainer extends Component {
     componentDidMount() {
         this.props.fetchAllJobs();
     }
+
+    
     render() {
-        const { user, jobs, isJobsLoading, applyToJob, appliedJobs, pendingJobs, completedJobs } = this.props
+        const { user, jobs, isJobsLoading, applyToJob, appliedJobs, pendingJobs, completedJobs, updateHourlyRate } = this.props
         return (
             <div>
-                <h2>Welcome {user.firstName}!</h2>
+                <h2>Welcome {user.firstName}!</h2> 
+                
                 <Switch>
-                    <Route exact path="/" render={routerProps => <CleanerHomeContainer {...routerProps} jobs={jobs} user={user} isLoading={isJobsLoading} applyToJob={applyToJob}/>} />
+                    <Route exact path="/" render={routerProps => <CleanerHomeContainer {...routerProps} jobs={jobs} user={user} isLoading={isJobsLoading} applyToJob={applyToJob} updateHourlyRate={updateHourlyRate} />} />
 
                     <Route exact path="/applied-jobs" render={routerProps => <CleanerAppliedJobsContainer {...routerProps} user={user} isLoading={isJobsLoading} appliedJobs={appliedJobs} /> } />
                 </Switch>
@@ -61,4 +65,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchAllJobs, applyToJob })(CleanerRoutesContainer);
+export default connect(mapStateToProps, { fetchAllJobs, applyToJob, updateHourlyRate })(CleanerRoutesContainer);

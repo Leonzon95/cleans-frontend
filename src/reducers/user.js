@@ -4,6 +4,8 @@ function user (state={isLoggedIn: false, user: {}}, action) {
             return {isLoggedIn: true, user: action.user};
         case "LOGOUT":
             return {isLoggedIn: false, user: {}};
+        case "UPDATE_USER":
+            return {isLoggedIn: true, user: action.user};
         default: 
             return state;
     }
