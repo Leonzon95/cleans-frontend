@@ -7,8 +7,13 @@ const PendingJobsContainer = props => {
 
         } else {
             return props.jobs.map(job => {
-                const address = props.addresses.find(address => address.id === job.addressesId);
-                return <Job job={job} address={address} hiredCleaner={job.hiredCleaner}/>
+                const address = props.addresses.find(address => address.id == job.addressId);
+                return (
+                    <div key={job.id}>
+                    <Job job={job} address={address} hiredCleaner={job.hiredCleaner} user={props.user}/>
+                    <br/>
+                    </div>
+                )
             })
         }
     }

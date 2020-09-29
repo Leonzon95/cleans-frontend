@@ -27,7 +27,7 @@ class NavBar extends Component {
             return(
             <Nav className="mr-auto">
                 <Nav><Link to='/addresses' className="nav-links link">My Adresses</Link></Nav>
-                <Nav.Link href="#link">Link</Nav.Link>
+                <Nav><Link to='/pending-jobs' className="nav-links link">Pending Jobs</Link></Nav>
             </Nav>
             )
         } else if (this.props.loggedInStatus && this.props.user.isCleaner){

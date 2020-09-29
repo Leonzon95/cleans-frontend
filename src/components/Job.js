@@ -28,7 +28,8 @@ const  Job = props => {
     const displayCleaner = () => {
         return (
             <div>
-                <h5>You hired:</h5>
+                <br/>
+                <h6>You hired:</h6>
                 {hiredCleaner.firstName} {hiredCleaner.lastName}<br />
                 Phone Number: {hiredCleaner.phoneNumber} <br/>
                 Email: {hiredCleaner.email} <br/>
@@ -49,8 +50,8 @@ const  Job = props => {
                     Location: <br></br>
                     {address.streetAddress}<br></br>
                     {address.city}, {address.state} {address.country} {address.zipcode}
-                    {hiredCleaner ? displayCleaner() : null}
                 </Card.Text>
+                {hiredCleaner ? displayCleaner() : null}
                {displayButtons()}
             </Card.Body>
         </Card>

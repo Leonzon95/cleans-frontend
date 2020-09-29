@@ -5,6 +5,7 @@ import AddressesContainer from './AddressesContainer'
 import { connect } from 'react-redux';
 import { addAddress, fetchAddresses } from '../actions/address'
 import { addJob, fetchJobs, hire } from '../actions/job'
+import PendingJobsContainer from './PendingJobsContainer';
 
 class RegUserRoutesContainer extends Component{
     componentDidMount() {
@@ -13,15 +14,16 @@ class RegUserRoutesContainer extends Component{
     }
 
     render() {
-        const {user, addresses, newJobs, addAddress, addJob, isAddressesLoading, isJobsLoading, hire} = this.props;
+        const {user, addresses, newJobs, addAddress, addJob, isAddressesLoading, isJobsLoading, hire, pendingJobs} = this.props;
         return (
             <div>
                 <h2>Welcome {user.firstName}!</h2>
                 <Switch>
-                    
+                    <Route path="/pending-jobs" render={(routerProps) => <PendingJobsContainer {...routerProps} user={user}  addresses={addresses} jobs={pendingJobs} />} />
+
                     <Route path="/addresses" render={(routerProps) => <AddressesContainer {...routerProps} user={user}  addresses={addresses} addAddress={addAddress} isLoading={isJobsLoading || isAddressesLoading} /> } />
 
-                    <Route path="/pending-jobs" render={(routerProps) => <AddressesContainer {...routerProps} user={user}  addresses={addresses} /> } />
+                    
 
                     <Route extact path="/" render={(routerProps) => <RegUserHomeContainer {...routerProps} user={user}  addresses={addresses} jobs={newJobs} addJob={addJob} isLoading={isJobsLoading || isAddressesLoading} hire={hire} /> } />
                 </Switch>
