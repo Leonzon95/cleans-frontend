@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
 const  Job = props => {
-    const { job, address, user, applyToJob, applied} = props;
+    const { job, address, user, applyToJob, applied, hiredCleaner} = props;
 
     const displayButtons = () => {
         if (user.isCleaner) {
@@ -15,11 +15,28 @@ const  Job = props => {
                 )
             }
         } else {
-            return (
-                <Link to={`/jobs/${job.id}/applicants`} className="bttn-link"><Button variant="info" className="signup-bttn" >See Applicants</Button></Link>
-            )
+            if(job.status === "new") {
+                return (
+                    <Link to={`/jobs/${job.id}/applicants`} className="bttn-link"><Button variant="info" className="signup-bttn" >See Applicants</Button></Link>
+                )
+            } else if (job.status === "pending") {
+                return <Button variant="success" className="signup-bttn" >Mark as completed</Button>
+            }
         }
     }
+
+    const displayCleaner = () => {
+        return (
+            <div>
+                <h5>You hired:</h5>
+                {hiredCleaner.firstName} {hiredCleaner.lastName}<br />
+                Phone Number: {hiredCleaner.phoneNumber} <br/>
+                Email: {hiredCleaner.email} <br/>
+                Hourly Rate: {hiredCleaner.hourlyRate}$ 
+            </div>
+        )
+    }
+
     return (
         <Card id={job.id}>
             <Card.Body>
@@ -32,6 +49,7 @@ const  Job = props => {
                     Location: <br></br>
                     {address.streetAddress}<br></br>
                     {address.city}, {address.state} {address.country} {address.zipcode}
+                    {hiredCleaner ? displayCleaner() : null}
                 </Card.Text>
                {displayButtons()}
             </Card.Body>

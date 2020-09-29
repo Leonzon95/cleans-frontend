@@ -20,6 +20,9 @@ class RegUserRoutesContainer extends Component{
                 <Switch>
                     
                     <Route path="/addresses" render={(routerProps) => <AddressesContainer {...routerProps} user={user}  addresses={addresses} addAddress={addAddress} isLoading={isJobsLoading || isAddressesLoading} /> } />
+
+                    <Route path="/pending-jobs" render={(routerProps) => <AddressesContainer {...routerProps} user={user}  addresses={addresses} /> } />
+
                     <Route extact path="/" render={(routerProps) => <RegUserHomeContainer {...routerProps} user={user}  addresses={addresses} jobs={newJobs} addJob={addJob} isLoading={isJobsLoading || isAddressesLoading} hire={hire} /> } />
                 </Switch>
             </div>
