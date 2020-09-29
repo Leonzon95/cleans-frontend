@@ -20,7 +20,7 @@ const  Job = props => {
                     <Link to={`/jobs/${job.id}/applicants`} className="bttn-link"><Button variant="info" className="signup-bttn" >See Applicants</Button></Link>
                 )
             } else if (job.status === "pending") {
-                return <Button variant="success" className="signup-bttn" >Mark as completed</Button>
+                return <Button variant="success" className="signup-bttn" onClick={()=> props.complete(user.id, job.id, null, true)}>Mark as completed</Button>
             }
         }
     }

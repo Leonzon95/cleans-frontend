@@ -14,7 +14,7 @@ function jobs(state={loading: true, data: []}, action) {
                 return job;
             });
             return {loading: false, data: jobs}
-        case "HIRE":
+        case "UPDATE_JOB":
             const jobss = state.data.map(job => {
                 if (job.id === action.jobId) {
                     return action.job

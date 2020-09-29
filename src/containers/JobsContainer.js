@@ -10,7 +10,7 @@ const JobsContainer = props => {
                 const address = props.addresses.find(address => address.id == job.addressId);
                 return (
                     <div key={job.id}>
-                    <Job job={job} address={address} hiredCleaner={job.hiredCleaner} user={props.user}/>
+                    <Job job={job} address={address} hiredCleaner={job.hiredCleaner} user={props.user} complete={props.complete}/>
                     <br/>
                     </div>
                 )

@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import AddressesContainer from './AddressesContainer'
 import { connect } from 'react-redux';
 import { addAddress, fetchAddresses } from '../actions/address'
-import { addJob, fetchJobs, hire } from '../actions/job'
+import { addJob, fetchJobs, updateJob } from '../actions/job'
 import JobsContainer from './JobsContainer';
 
 class RegUserRoutesContainer extends Component{
@@ -14,18 +14,18 @@ class RegUserRoutesContainer extends Component{
     }
 
     render() {
-        const { user, addresses, newJobs, addAddress, addJob, isAddressesLoading, isJobsLoading, hire, pendingJobs, completedJobs } = this.props;
+        const { user, addresses, newJobs, addAddress, addJob, isAddressesLoading, isJobsLoading, updateJob, pendingJobs, completedJobs } = this.props;
         return (
             <div>
                 <h2>Welcome {user.firstName}!</h2>
                 <Switch>
-                    <Route path="/pending-jobs" render={(routerProps) => <JobsContainer {...routerProps} user={user}  addresses={addresses} jobs={pendingJobs} />} />
+                    <Route path="/pending-jobs" render={(routerProps) => <JobsContainer {...routerProps} user={user}  addresses={addresses} jobs={pendingJobs} complete={updateJob} />} />
 
                     <Route path="/completed-jobs" render={(routerProps) => <JobsContainer {...routerProps} user={user}  addresses={addresses} jobs={completedJobs} />} />
 
                     <Route path="/addresses" render={(routerProps) => <AddressesContainer {...routerProps} user={user}  addresses={addresses} addAddress={addAddress} isLoading={isJobsLoading || isAddressesLoading} /> } />
 
-                    <Route extact path="/" render={(routerProps) => <RegUserHomeContainer {...routerProps} user={user}  addresses={addresses} jobs={newJobs} addJob={addJob} isLoading={isJobsLoading || isAddressesLoading} hire={hire} /> } />
+                    <Route extact path="/" render={(routerProps) => <RegUserHomeContainer {...routerProps} user={user}  addresses={addresses} jobs={newJobs} addJob={addJob} isLoading={isJobsLoading || isAddressesLoading} hire={updateJob} /> } />
                 </Switch>
             </div>
         )
@@ -51,4 +51,4 @@ const mapStateToProps = state => {
         isJobsLoading: state.jobs.loading
     }
 }
-export default connect(mapStateToProps, { addAddress, addJob, fetchAddresses, fetchJobs, hire })(RegUserRoutesContainer);
+export default connect(mapStateToProps, { addAddress, addJob, fetchAddresses, fetchJobs, updateJob })(RegUserRoutesContainer);
