@@ -13,14 +13,14 @@ class RegUserRoutesContainer extends Component{
     }
 
     render() {
-        const {user, addresses, jobs, addAddress, addJob, isAddressesLoading, isJobsLoading, hire} = this.props;
+        const {user, addresses, newJobs, addAddress, addJob, isAddressesLoading, isJobsLoading, hire} = this.props;
         return (
             <div>
                 <h2>Welcome {user.firstName}!</h2>
                 <Switch>
                     
                     <Route path="/addresses" render={(routerProps) => <AddressesContainer {...routerProps} user={user}  addresses={addresses} addAddress={addAddress} isLoading={isJobsLoading || isAddressesLoading} /> } />
-                    <Route extact path="/" render={(routerProps) => <RegUserHomeContainer {...routerProps} user={user}  addresses={addresses} jobs={jobs} addJob={addJob} isLoading={isJobsLoading || isAddressesLoading} hire={hire} /> } />
+                    <Route extact path="/" render={(routerProps) => <RegUserHomeContainer {...routerProps} user={user}  addresses={addresses} jobs={newJobs} addJob={addJob} isLoading={isJobsLoading || isAddressesLoading} hire={hire} /> } />
                 </Switch>
             </div>
         )
@@ -29,8 +29,18 @@ class RegUserRoutesContainer extends Component{
 }
 
 const mapStateToProps = state => {
+    const newJobs = [];
+    const pendingJobs = [];
+    const completedJobs = [];
+    for (const job of state.jobs.data) {
+        if (job.status === "new") newJobs.push(job);
+        if (job.status === "pending") pendingJobs.push(job);
+        if(job.status === "completed") completedJobs.push(job);
+    }
     return {
-        jobs: state.jobs.data,
+        newJobs: newJobs,
+        pendingJobs: pendingJobs,
+        completedJobs: completedJobs,
         addresses: state.addresses.data,
         isAddressesLoading: state.addresses.loading,
         isJobsLoading: state.jobs.loading

@@ -3,6 +3,11 @@ import { Card, Button } from 'react-bootstrap';
 
 const Applicant= props => {
     const applicant = props.applicant;
+    
+    const handleClick = event => {
+        props.hire(props.userId, props.jobId, applicant.id)
+        props.history.push('/')
+    }
     return (
         <Card id={applicant.id}>
             <Card.Body>
@@ -13,7 +18,7 @@ const Applicant= props => {
                 Phone Number: {applicant.phoneNumber}<br />
 
                 </Card.Text>
-                <Button variant="success" className="signup-bttn" onClick={() => props.hire(props.userId, props.jobId, applicant.id)} >Hire</Button>
+                <Button variant="success" className="signup-bttn" onClick={handleClick} >Hire</Button>
             </Card.Body>
         </Card>
     )
