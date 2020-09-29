@@ -35,7 +35,8 @@ class RegUserHomeContainer extends Component {
             <div>
                 <Container>
                 <Row >
-                    <Col className="padd-top">    
+                    <Col className="padd-top">  
+                    <h4>Posted Jobs:</h4>  
                         {this.props.isLoading ?  this.displayLoading() : this.displayJobs()}
                     </Col>  
 
@@ -48,7 +49,7 @@ class RegUserHomeContainer extends Component {
                         <Switch >
                             <Route exact path="/jobs/new" render={routerProps => <NewJob user={this.props.user} addJob={this.props.addJob} addresses={this.props.addresses} />} />
 
-                            <Route exact path="/jobs/:jodId/applicants" render={routerProps => <ApplicantContainer {...routerProps} user={this.props.user} jobs={this.props.jobs} />} />
+                            <Route exact path="/jobs/:jodId/applicants" render={routerProps => <ApplicantContainer {...routerProps} user={this.props.user} jobs={this.props.jobs} hire={this.props.hire} />} />
                         </Switch>
                     </Col>
                 </Row>

@@ -5,7 +5,6 @@ function addresses(state={loading: false, data: []}, action) {
         case "ADD_ADDRESS":
             return {loading: false, data: [...state.data, action.address]};
         case "ADD_ADDRESSES":
-            console.log(action.addresses)
             return {loading: false, data: [...action.addresses]};
         case "LOGOUT": 
             return {loading: false, data: []}

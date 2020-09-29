@@ -34,3 +34,13 @@ export const applyToJob = (userId ,jobId) => {
     }
 }
 
+export const hire = (userId ,jobId, cleanerId) => {
+    return dispatch => {
+        axios.patch(`http://localhost:3001/users/${userId}/jobs/${jobId}`, {cleaner_id: cleanerId}, {withCredentials: true})
+        .then(response => {
+            dispatch({type: "HIRE", jobId, job: response.data.job });
+          })
+        .catch(error => console.log('api errors:', error));
+    }
+}
+
