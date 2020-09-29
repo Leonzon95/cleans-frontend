@@ -28,6 +28,7 @@ class NavBar extends Component {
             <Nav className="mr-auto">
                 <Nav><Link to='/addresses' className="nav-links link">My Adresses</Link></Nav>
                 <Nav><Link to='/pending-jobs' className="nav-links link">Pending Jobs</Link></Nav>
+                <Nav><Link to='/completed-jobs' className="nav-links link">Completed Jobs</Link></Nav>
             </Nav>
             )
         } else if (this.props.loggedInStatus && this.props.user.isCleaner){

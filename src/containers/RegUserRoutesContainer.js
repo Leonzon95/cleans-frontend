@@ -43,9 +43,9 @@ const mapStateToProps = state => {
         if(job.status === "completed") completedJobs.push(job);
     }
     return {
-        newJobs: newJobs,
-        pendingJobs: pendingJobs,
-        completedJobs: completedJobs,
+        newJobs: newJobs.reverse(),
+        pendingJobs: pendingJobs.reverse(),
+        completedJobs: completedJobs.reverse(),
         addresses: state.addresses.data,
         isAddressesLoading: state.addresses.loading,
         isJobsLoading: state.jobs.loading
