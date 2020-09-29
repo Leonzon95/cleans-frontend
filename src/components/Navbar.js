@@ -35,6 +35,8 @@ class NavBar extends Component {
             return (
             <Nav className="mr-auto">
                 <Nav><Link to='/applied-jobs' className="nav-links link">Applied Jobs</Link></Nav>
+                <Nav><Link to='/jobs/pending' className="nav-links link">Pending Jobs</Link></Nav>
+                <Nav><Link to='/jobs/completed' className="nav-links link">Completed Jobs</Link></Nav>
             </Nav>
             )
         } else {

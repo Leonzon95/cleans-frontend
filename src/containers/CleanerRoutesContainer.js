@@ -5,6 +5,7 @@ import CleanerAppliedJobsContainer from './CleanerAppliedJobsContainer'
 import { fetchAllJobs, applyToJob } from '../actions/job';
 import { updateHourlyRate } from '../actions/user'
 import { connect } from 'react-redux';
+import JobsContainer from './JobsContainer'
 
 class CleanerRoutesContainer extends Component {
 
@@ -20,9 +21,11 @@ class CleanerRoutesContainer extends Component {
                 <h2>Welcome {user.firstName}!</h2> 
                 
                 <Switch>
-                    <Route exact path="/" render={routerProps => <CleanerHomeContainer {...routerProps} jobs={jobs} user={user} isLoading={isJobsLoading} applyToJob={applyToJob} updateHourlyRate={updateHourlyRate} />} />
+                    <Route exact path="/jobs/pending" render={routerProps => <JobsContainer {...routerProps} user={user} jobs={pendingJobs} /> } />
 
                     <Route exact path="/applied-jobs" render={routerProps => <CleanerAppliedJobsContainer {...routerProps} user={user} isLoading={isJobsLoading} appliedJobs={appliedJobs} /> } />
+
+                    <Route exact path="/" render={routerProps => <CleanerHomeContainer {...routerProps} jobs={jobs} user={user} isLoading={isJobsLoading} applyToJob={applyToJob} updateHourlyRate={updateHourlyRate} />} />
                 </Switch>
             </div>
         )

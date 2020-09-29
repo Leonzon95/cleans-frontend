@@ -7,9 +7,7 @@ const  Job = props => {
 
     const displayButtons = () => {
         if (user.isCleaner) {
-            if (applied){
-                return <div></div>
-            } else {
+            if (job.status === "new" && !applied) {
                 return (
                     <Button variant="primary" onClick={() => applyToJob(user.id, job.id)} >Apply for job</Button>
                 )

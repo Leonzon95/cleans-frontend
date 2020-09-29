@@ -4,7 +4,13 @@ import Job from '../components/Job';
 const JobsContainer = props => {
     const displayJobs = () => {
         if(props.user.isCleaner) {
-
+            return props.jobs.map(job => {
+                return (
+                    <div key={job.id}>
+                        <Job job={job} address={job.address} user={props.user} />
+                    </div>
+                )
+            })
         } else {
             return props.jobs.map(job => {
                 const address = props.addresses.find(address => address.id == job.addressId);
