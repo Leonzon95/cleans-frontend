@@ -16,7 +16,7 @@ const  Job = props => {
             }
         } else {
             return (
-                <Button variant="info" className="signup-bttn" ><Link to={`/jobs/${job.id}/applicants`} className="bttn-link">See Applicants</Link></Button>
+                <Link to={`/jobs/${job.id}/applicants`} className="bttn-link"><Button variant="info" className="signup-bttn" >See Applicants</Button></Link>
             )
         }
     }

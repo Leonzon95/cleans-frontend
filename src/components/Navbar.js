@@ -7,7 +7,7 @@ class NavBar extends Component {
         if(this.props.loggedInStatus){
             return (
                 <Nav>
-                    
+                    {!this.props.user.isCleaner ? <Link to="/jobs/new" className="nav-links signup"><Button variant="info" className="signup-bttn" >Post a Job</Button></Link> : null}
                     <Nav.Link className="nav-links link" onClick={() => this.props.handleLogout()}>Log out</Nav.Link>
                 </Nav>
             )
@@ -15,7 +15,8 @@ class NavBar extends Component {
             return (
                 <Nav>
                     <Nav><Link to='/login' className="nav-links link">Log In</Link></Nav>
-                    <Button variant="info" className="signup-bttn" ><Link to='/signup' className="nav-links signup">Sign Up</Link></Button>
+                    <Link to='/signup' className="nav-links signup">
+                    <Button variant="info" className="signup-bttn" >Sign Up</Button></Link>
                 </Nav>
             )
         }

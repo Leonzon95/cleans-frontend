@@ -1,10 +1,9 @@
 import React from 'react'
-import jobs from '../reducers/jobs'
 import Applicant from '../components/Applicant'
 
 const ApplicantsContainer = (props) => {
     const job = props.jobs.find(job => props.match.params.jodId == job.id);
-    const applicants = job.applicants.map(applicant => <Applicant key={applicant.id} applicant={applicant}/>);
+    const applicants = job.applicants.map(applicant => <div><Applicant key={applicant.id} applicant={applicant}/><br/></div>);
     return (
         <div>
             <h4>Applicants:</h4>
