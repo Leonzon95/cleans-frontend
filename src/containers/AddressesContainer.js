@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Row, Col, Button, Container, Spinner } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Switch, Route, Link } from 'react-router-dom'
-import NewAddress from '../components/NewAddress'
+import NewAddress from '../components/NewAddress';
+import Address from '../components/Address';
 
 class AddressesContainer extends Component {
     displayAddresses() {
         return this.props.addresses.map(address => {
             return (
-                <li>
-                    {address.name}
-                </li>
+               <div key={address.id}>
+                   <Address address={address} />
+                   <br/>
+               </div>
             )
         })
     }
@@ -30,9 +32,8 @@ class AddressesContainer extends Component {
             <Container>
                 <Row >
                     <Col className="padd-top">
-                        <ul>
+                        <h4>My Addresses:</h4>
                             {isLoading ?  this.displayLoading() : this.displayAddresses()}
-                        </ul>
                     </Col>  
 
                     <Col >
