@@ -1,7 +1,7 @@
 import React from 'react';
 import Job from '../components/Job';
 
-const PendingJobsContainer = props => {
+const JobsContainer = props => {
     const displayJobs = () => {
         if(props.user.isCleaner) {
 
@@ -23,4 +23,4 @@ const PendingJobsContainer = props => {
         </div>
     )
 }
-export default PendingJobsContainer
+export default JobsContainer
