@@ -9,14 +9,18 @@ class CleanerHomeContainer extends Component {
     }
 
     displayJobs() {
-        return this.props.jobs.map(job => {
-            return(
-                <div key={job.id}>
-                    {<Job job={job} address={job.address} user={this.props.user} applyToJob={this.props.applyToJob}/>}
-                    <br />
-                </div>
-            )
-        })
+        if (this.props.jobs.length){
+            return this.props.jobs.map(job => {
+                return(
+                    <div key={job.id}>
+                        {<Job job={job} address={job.address} user={this.props.user} applyToJob={this.props.applyToJob}/>}
+                        <br />
+                    </div>
+                )
+            })
+        } else {
+            return <h5>There are currently no jobs posted</h5>
+        }
     }
 
     displayLoading() {
@@ -30,7 +34,7 @@ class CleanerHomeContainer extends Component {
     displayHourlyrate() {
         const { hourlyRate } = this.props.user;
         if (!!hourlyRate){
-            return <h5>Your Hourly Rate is {hourlyRate}</h5>
+            return <h5>Your Hourly Rate is {hourlyRate}$</h5>
         } else {
             return <h5>You currently don't have an hourly rate, please update it</h5>
         }
@@ -91,12 +95,17 @@ class CleanerHomeContainer extends Component {
             <Row>
                 <Col>
                 {this.displayHourlyrate()}
+                
                 <Button variant="info" className="signup-bttn job text-right" onClick={this.handleClick}>{displayHourlyForm ? <div>Close</div> : <div>Update Hourly Rate</div>}</Button>
+                
                 {displayHourlyForm ? this.displayHourlForm() : null}
+                
                 </Col>
             </Row>
+            <br/>
             <Row>
             <Col>
+                <h4>Posted Jobs:</h4>
                 {this.props.isLoading ?  this.displayLoading() : this.displayJobs()}
             </Col>
             </Row>

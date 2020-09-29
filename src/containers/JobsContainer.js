@@ -8,6 +8,7 @@ const JobsContainer = props => {
                 return (
                     <div key={job.id}>
                         <Job job={job} address={job.address} user={props.user} />
+                        <br/>
                     </div>
                 )
             })

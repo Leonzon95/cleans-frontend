@@ -18,6 +18,7 @@ class RegUserRoutesContainer extends Component{
         return (
             <div>
                 <h2>Welcome {user.firstName}!</h2>
+                <hr/>
                 <Switch>
                     <Route path="/pending-jobs" render={(routerProps) => <JobsContainer {...routerProps} user={user}  addresses={addresses} jobs={pendingJobs} complete={updateJob} />} />
 

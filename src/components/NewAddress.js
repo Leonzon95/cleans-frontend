@@ -60,6 +60,7 @@ class NewAddress extends Component {
         const { name, country, state, zipcode, city, street_address } = this.state;
         return (
             <div>
+            <h4>New Address</h4>
             {this.state.errors ? this.handleErrors() : null}
             <Form className="padd-top" onSubmit={this.handleSubmit}>
                 <Form.Group controlId="formBasicName">

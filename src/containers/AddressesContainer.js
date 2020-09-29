@@ -35,7 +35,7 @@ class AddressesContainer extends Component {
                         </ul>
                     </Col>  
 
-                    <Col className="padd-top" >
+                    <Col >
                         <Button variant="info" className="signup-bttn job padd-top float-right" ><Link to="/addresses/new" className="bttn-link">New Address</Link></Button>
                         <Switch>
                             <Route exact path={`${match.url}/new`} render={routerProps => <NewAddress user={user} addAddress={addAddress} />} />

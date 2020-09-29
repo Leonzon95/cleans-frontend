@@ -18,10 +18,13 @@ class CleanerRoutesContainer extends Component {
         const { user, jobs, isJobsLoading, applyToJob, appliedJobs, pendingJobs, completedJobs, updateHourlyRate } = this.props
         return (
             <div>
-                <h2>Welcome {user.firstName}!</h2> 
+                <h2>Welcome {user.firstName}!</h2>
+                <hr/>
                 
                 <Switch>
                     <Route exact path="/jobs/pending" render={routerProps => <JobsContainer {...routerProps} user={user} jobs={pendingJobs} /> } />
+
+                    <Route exact path="/jobs/completed" render={routerProps => <JobsContainer {...routerProps} user={user} jobs={completedJobs} /> } />
 
                     <Route exact path="/applied-jobs" render={routerProps => <CleanerAppliedJobsContainer {...routerProps} user={user} isLoading={isJobsLoading} appliedJobs={appliedJobs} /> } />
 
@@ -61,9 +64,9 @@ const mapStateToProps = state => {
     }
     return {
         jobs: jobs,
-        appliedJobs: appliedJobs,
-        pendingJobs: pendingJobs,
-        completedJobs: completedJobs,
+        appliedJobs: appliedJobs.reverse(),
+        pendingJobs: pendingJobs.reverse(),
+        completedJobs: completedJobs.reverse(),
         isJobsLoading: state.jobs.loading
     }
 }
