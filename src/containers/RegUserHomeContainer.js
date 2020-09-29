@@ -3,6 +3,7 @@ import { Button, Col, Row, Container, Spinner } from 'react-bootstrap';
 import NewJob from '../components/NewJob'
 import Job from '../components/Job'
 import { Route, Switch, Link } from 'react-router-dom';
+import ApplicantContainer from './ApplicantsContainer'
 
 class RegUserHomeContainer extends Component {
     state = {
@@ -39,9 +40,16 @@ class RegUserHomeContainer extends Component {
                     </Col>  
 
                     <Col className="padd-top" >
+                        <Row>
+                            <Col>
                         <Button variant="info" className="signup-bttn job padd-top float-right" ><Link to="/jobs/new" className="bttn-link">Post a Job</Link></Button>
-                        <Switch>
+                        </Col>
+                        </Row>
+                        <br></br>
+                        <Switch >
                             <Route exact path="/jobs/new" render={routerProps => <NewJob user={this.props.user} addJob={this.props.addJob} addresses={this.props.addresses} />} />
+
+                            <Route exact path="/jobs/:jodId/applicants" render={routerProps => <ApplicantContainer {...routerProps} user={this.props.user} jobs={this.props.jobs} />} />
                         </Switch>
                     </Col>
                 </Row>

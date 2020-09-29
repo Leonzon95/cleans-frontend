@@ -13,7 +13,7 @@ class CleanerHomeContainer extends Component {
             return(
                 <div key={job.id}>
                     {<Job job={job} address={job.address} user={this.props.user} applyToJob={this.props.applyToJob}/>}
-                    <br></br>
+                    <br />
                 </div>
             )
         })
@@ -96,7 +96,9 @@ class CleanerHomeContainer extends Component {
                 </Col>
             </Row>
             <Row>
+            <Col>
                 {this.props.isLoading ?  this.displayLoading() : this.displayJobs()}
+            </Col>
             </Row>
             </div>
         )

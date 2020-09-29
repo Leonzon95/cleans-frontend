@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 const  Job = props => {
     const { job, address, user, applyToJob, applied} = props;
@@ -15,7 +16,7 @@ const  Job = props => {
             }
         } else {
             return (
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="info" className="signup-bttn" ><Link to={`/jobs/${job.id}/applicants`} className="bttn-link">See Applicants</Link></Button>
             )
         }
     }
