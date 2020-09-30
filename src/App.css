@@ -99,3 +99,9 @@ body .homecards {
     float: none; 
     margin-bottom: 10px; 
 }
+
+body #footer {
+    background-color: #c0fcf2;
+    padding: 30px;
+    text-align: center;
+}

@@ -9,6 +9,7 @@ import SignUp from './components/registrations/SignUp';
 import NavBar from './components/Navbar'
 import {sendLogIn, sendLogOut} from './actions/user';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './components/Footer'
 import { Container } from 'react-bootstrap';
 
 
@@ -54,7 +55,7 @@ class App extends Component{
 
             <Route path='/'  render={props => <Home {...props} loggedInStatus={this.props.isLoggedIn} user={this.props.user} />} />
           </Switch>
-          
+          <Footer/>
         </Router>
       </div>
     )
