@@ -10,7 +10,7 @@ import NavBar from './components/Navbar'
 import {sendLogIn, sendLogOut} from './actions/user';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Footer'
-import { Container } from 'react-bootstrap';
+
 
 
 class App extends Component{
