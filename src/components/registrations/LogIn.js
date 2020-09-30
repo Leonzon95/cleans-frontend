@@ -61,7 +61,7 @@ class LogIn extends Component {
         const {username, password} = this.state
 
         return (
-            <Container>
+            <Container className="one-page-height">
                 <Row>
                   <Col md={{ span: 6, offset: 3 }}>
                     <h1>Log In</h1>

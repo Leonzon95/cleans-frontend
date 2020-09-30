@@ -104,4 +104,11 @@ body #footer {
     background-color: #c0fcf2;
     padding: 30px;
     text-align: center;
+    clear: both;
+    position: relative;
+    margin-top: 0px;
+}
+            
+body .one-page-height {
+    min-height: calc(100vh - 50px);
 }

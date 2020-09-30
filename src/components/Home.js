@@ -9,7 +9,7 @@ const Home = (props) => {
       return <HomePage />;
     } else {
       return (
-        <Container>
+        <Container className="one-page-height">
           <LoggedInHome user={props.user} isCleaner={props.user.isCleaner} />
         </Container>
         )

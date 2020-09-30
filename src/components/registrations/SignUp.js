@@ -81,7 +81,7 @@ class SignUp extends Component {
     render() {
         const {username, email, password, password_confirmation, first_name, last_name, is_cleaner, phone_number} = this.state
         return (
-            <Container>
+            <Container className="one-page-height">
                 <h1>Sign Up</h1>
                 {this.state.errors ? this.handleErrors() : null}
                 <Form onSubmit={this.handleSubmit}>

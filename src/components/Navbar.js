@@ -25,7 +25,7 @@ class NavBar extends Component {
     displayLeftLinks() {
         if(this.props.loggedInStatus && !this.props.user.isCleaner){
             return(
-            <Nav className="mr-auto">
+            <Nav className="mr-auto" >
                 <Nav><Link to='/addresses' className="nav-links link">My Adresses</Link></Nav>
                 <Nav><Link to='/pending-jobs' className="nav-links link">Pending Jobs</Link></Nav>
                 <Nav><Link to='/completed-jobs' className="nav-links link">Completed Jobs</Link></Nav>
@@ -50,7 +50,7 @@ class NavBar extends Component {
 
     render() {
         return (
-            <Navbar bg="light" expand="lg" >
+            <Navbar bg="light" expand="lg" sticky="top">
             <Container>
                 <Navbar.Brand ><Link to='/' className="nav-links">Cleans</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
