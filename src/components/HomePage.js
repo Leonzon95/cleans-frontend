@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Jumbotron, Button, Container, Row, Col, Card } from 'react-bootstrap';
 import postJob from '../images/postJob.svg';
 import hire from '../images/hire.svg';
@@ -8,6 +8,13 @@ import clean from '../images/clean.svg';
 import completed from '../images/completed.svg';
 
 const HomePage = (props) => {
+    const howItWorksSection = useRef(null);
+
+    const gotoHowItWorksSection = () => window.scrollTo({ 
+        top: howItWorksSection.current.offsetTop - 50,
+        behavior: "smooth"
+    })
+
     return(
     <div>
         <div id="home-page-background">
@@ -24,13 +31,13 @@ const HomePage = (props) => {
                         </Col>
                     </Row>
                         <p>
-                            <Button variant="primary">Learn more</Button>
+                            <Button variant="primary" onClick={gotoHowItWorksSection} >Learn more</Button>
                         </p>
                     
                 </Jumbotron>
             </Container>
         </div>
-        <div className="gray-back">
+        <div className="gray-back" ref={howItWorksSection}>
             <br/>
             <Container >
                 <Row className="justify-content-md-center">
