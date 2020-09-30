@@ -1,6 +1,6 @@
 import React,  { Component } from 'react';
 import axios from 'axios'
-import { Form, Col, Button, Alert, Row } from 'react-bootstrap';
+import { Form, Col, Button, Alert, Row, Container } from 'react-bootstrap';
 
 class LogIn extends Component {
   
@@ -61,7 +61,7 @@ class LogIn extends Component {
         const {username, password} = this.state
 
         return (
-            <div>
+            <Container>
                 <Row>
                   <Col md={{ span: 6, offset: 3 }}>
                     <h1>Log In</h1>
@@ -84,7 +84,7 @@ class LogIn extends Component {
                     </Form>
                   </Col>
                 </Row>
-            </div>
+            </Container>
         );
     }
 }

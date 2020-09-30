@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, Col, Button, Alert } from 'react-bootstrap';
+import { Form, Col, Button, Alert, Container } from 'react-bootstrap';
 
 class SignUp extends Component {
     state = { 
@@ -81,7 +81,7 @@ class SignUp extends Component {
     render() {
         const {username, email, password, password_confirmation, first_name, last_name, is_cleaner, phone_number} = this.state
         return (
-            <div>
+            <Container>
                 <h1>Sign Up</h1>
                 {this.state.errors ? this.handleErrors() : null}
                 <Form onSubmit={this.handleSubmit}>
@@ -133,7 +133,7 @@ class SignUp extends Component {
                     Sign Up
                   </Button>
                 </Form>
-            </div>
+            </Container>
         );
     }
 }

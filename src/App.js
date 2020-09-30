@@ -45,15 +45,16 @@ class App extends Component{
       <div>
         <Router>
           <NavBar loggedInStatus={this.props.isLoggedIn} handleLogout={this.handleLogout} user={this.props.user} />
-          <Container>
+          
           <Switch>
+            
             <Route exact path='/login' render={props => <LogIn {...props} loggedInStatus={this.props.isLoggedIn} handleLogin={this.handleLogin} />} />
 
             <Route exact path='/signup' render={props => <SignUp {...props} loggedInStatus={this.props.isLoggedIn} handleLogin={this.handleLogin} />} />
 
             <Route path='/'  render={props => <Home {...props} loggedInStatus={this.props.isLoggedIn} user={this.props.user} />} />
           </Switch>
-          </Container>
+          
         </Router>
       </div>
     )
