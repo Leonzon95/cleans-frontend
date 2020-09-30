@@ -64,3 +64,38 @@ body button.text-right {
     flex-direction: row-reverse;
 }
 
+body #home-page-background {
+    background-image: url("./images/homeImg.jpg");
+    padding: 150px;
+    height: calc(100vh - 50px);
+    background-position-y: -150px;
+    background-color: #bdf9ef;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body #home-page-background #home-page-jumbotron {
+    /* background-color:rgba(0,0,0,0.1)!important; */
+    background-color:transparent!important;
+}
+
+body #home-page-background #home-page-jumbotron #header-font {
+    font-size: 75px;
+}
+
+body .gray-back {
+    background-color: #dcdcdc;
+}
+
+body .row-thumbnails {
+    flex: 1 0 100%;
+    margin-top: calc(var(--bs-gutter-y)*-1);
+    margin-right: calc(var(--bs-gutter-x)/-2);
+    margin-left: calc(var(--bs-gutter-x)/-2);
+}
+
+body .homecards {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+}
