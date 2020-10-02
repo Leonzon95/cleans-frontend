@@ -1,8 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Cleans
 
-This app help people hire someone to do a cleaning job and it helps people find cleaning jobs. 
+This app helps people find and hire someone to do a cleaning job and it helps people find cleaning jobs. 
 
 ### Prerequisites
 
