@@ -121,3 +121,7 @@ body .rating-star-form {
     transition: color 200ms;
 
 }
+
+input[type="radio"] {
+    display: none;
+}

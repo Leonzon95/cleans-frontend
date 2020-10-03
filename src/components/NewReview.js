@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
 
 class NewReview extends Component {
     state = {
         comment: '',
         rating: null,
-        displayForm: false
+        displayForm: false,
+        hover: null
     }
 
     handleChange = (event) => {
@@ -17,35 +18,47 @@ class NewReview extends Component {
     };
 
     displayStarInput() {
+        const { rating, hover } = this.state;
         return [...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
             return (
-                <label>
+                <label key={ratingValue}>
                     <input type="radio" name="rating" value={ratingValue} onClick={this.handleChange} />
-                    <FaStar size={50} className="rating-star-form" />
+                    <FaStar size={25} 
+                        color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                        className="rating-star-form"
+                        onMouseEnter={() =>  this.setState({hover: ratingValue})} 
+                        onMouseLeave={() => this.setState({hover: null})}  
+                    />
                 </label>
             )
         })
     }
 
-    handleDisplayFormCLick() {
-        this.setState(prevState => {displayForm: !prevState})
+    handleDisplayFormCLick = () => {
+        const {displayForm} = this.state
+        this.setState({displayForm: !displayForm})
     }
 
     displayForm() {
         return (
             <Form>
+                <br/>
+                <h6>Write a review</h6>
                 {this.displayStarInput()}
                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Example textarea</Form.Label>
-                    <Form.Control as="textarea" rows="3" name="comment" value={comment} onChange={this.handleChange} />
+                    <Form.Label>Review:</Form.Label>
+                    <Form.Control as="textarea" rows="3" name="comment" value={this.state.comment} onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group controlId="validationCustom04">
+                    <Button type="submit" className="signup-bttn">Submit</Button>
                 </Form.Group>
             </Form>
         )
     }
 
     render() {
-        const { comment, displayForm } = this.state;
+        const { displayForm } = this.state;
        
         return (
             <div>
