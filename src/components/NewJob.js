@@ -21,7 +21,6 @@ class NewJob extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const { description, estimated_time, date, time, address_id } = this.state
-        console.log(this.state)
         const job ={
             description,
             estimated_time,

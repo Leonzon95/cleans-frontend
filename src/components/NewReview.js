@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { updateUsersRating } from '../actions/user'
 
 class NewReview extends Component {
     state = {
@@ -42,7 +45,7 @@ class NewReview extends Component {
 
     displayForm() {
         return (
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
                 <br/>
                 <h6>Write a review</h6>
                 {this.displayStarInput()}
@@ -55,6 +58,17 @@ class NewReview extends Component {
                 </Form.Group>
             </Form>
         )
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const { rating, comment} = this.state;
+        const review = {rating, comment};
+        axios.post(`http://localhost:3001/users/${this.props.hiredCleaner.id}/reviews`,{review}, {job_id: this.props.jobId} ,{withCredentials: true})
+        .then(response => {
+            this.props.updateUsersRating(response.data.user)
+            this.props.complete()
+        })
     }
 
     render() {
@@ -70,4 +84,4 @@ class NewReview extends Component {
     }
 }
 
-export default NewReview;
+export default connect(null, { updateUsersRating })(NewReview);

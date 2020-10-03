@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const sendLogIn = (user) => ( { type: "LOGIN", user: user } );
 export const sendLogOut = () => ( { type: "LOGOUT" } );
+export const updateUsersRating = (user) => ({type: "UPDATE_CLEANERS_RATING", user: user});
 
 export const updateHourlyRate = (userId, hourlyRate) => {
     return dispatch => {

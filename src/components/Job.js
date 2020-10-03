@@ -23,7 +23,7 @@ const  Job = props => {
                     <Link to={`/jobs/${job.id}/applicants`} className="bttn-link"><Button variant="info" className="signup-bttn" >See Applicants</Button></Link>
                 )
             } else if (job.status === "pending") {
-                return <NewReview complete={handleComplete} hiredCleaner={hiredCleaner} />
+                return <NewReview complete={handleComplete} hiredCleaner={hiredCleaner} jobId={job.id} />
             }
         }
     }
