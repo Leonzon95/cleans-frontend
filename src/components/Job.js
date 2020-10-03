@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
 const  Job = props => {
@@ -25,20 +25,23 @@ const  Job = props => {
 
     const displayCleaner = () => {
         return (
-            <div>
-                <br/>
-                <h6>You hired:</h6>
-                {hiredCleaner.firstName} {hiredCleaner.lastName}<br />
+            <Col>
+                <Card.Title as="h5">You hired:</Card.Title>
+                <Card.Text>
+                {hiredCleaner.firstName} {hiredCleaner.lastName}<br/>
                 Phone Number: {hiredCleaner.phoneNumber} <br/>
                 Email: {hiredCleaner.email} <br/>
                 Hourly Rate: {hiredCleaner.hourlyRate}$ 
-            </div>
+                </Card.Text>
+            </Col>
         )
     }
 
     return (
         <Card id={job.id}>
             <Card.Body>
+                <Row>
+                <Col>
                 <Card.Title as="h5">{job.description}</Card.Title>
                 <Card.Text>
                     Date: {job.date}
@@ -49,8 +52,13 @@ const  Job = props => {
                     {address.streetAddress}<br></br>
                     {address.city}, {address.state} {address.country} {address.zipcode}
                 </Card.Text>
+                {displayButtons()}
+                </Col>
+              
                 {hiredCleaner ? displayCleaner() : null}
-               {displayButtons()}
+               
+               
+               </Row>
             </Card.Body>
         </Card>
     )
