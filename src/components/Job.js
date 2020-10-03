@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Button, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import NewReview from './NewReview'
+import RatingStar from './RatingStar';
 
 const  Job = props => {
     const { job, address, user, applyToJob, applied, hiredCleaner} = props;
@@ -36,7 +37,8 @@ const  Job = props => {
                 {hiredCleaner.firstName} {hiredCleaner.lastName}<br/>
                 Phone Number: {hiredCleaner.phoneNumber} <br/>
                 Email: {hiredCleaner.email} <br/>
-                Hourly Rate: {hiredCleaner.hourlyRate}$ 
+                Hourly Rate: {hiredCleaner.hourlyRate}$ <br/>
+                Rating: {hiredCleaner.rating ? <RatingStar rating={hiredCleaner.rating} /> : "User does not have rating yet"}
                 </Card.Text>
             </Col>
         )

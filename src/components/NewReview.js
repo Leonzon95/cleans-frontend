@@ -64,10 +64,10 @@ class NewReview extends Component {
         event.preventDefault();
         const { rating, comment} = this.state;
         const review = {rating, comment};
-        axios.post(`http://localhost:3001/users/${this.props.hiredCleaner.id}/reviews`,{review}, {job_id: this.props.jobId} ,{withCredentials: true})
+        axios.post(`http://localhost:3001/users/${this.props.hiredCleaner.id}/reviews`,{review, job_id: this.props.jobId} ,{withCredentials: true})
         .then(response => {
-            this.props.updateUsersRating(response.data.user)
             this.props.complete()
+            this.props.updateUsersRating(response.data.user)
         })
     }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Spinner, Row, Button, Col, Form } from 'react-bootstrap';
 import Job from '../components/Job'
+import RatingStar from '../components/RatingStar';
 
 class CleanerHomeContainer extends Component {
     state={
@@ -88,12 +89,21 @@ class CleanerHomeContainer extends Component {
         )
     }
 
+    displayRating() {
+        if (!this.props.user.rating) {
+            return <h5>You don't have a rating yet</h5>
+        } else {
+            return <h5>Your rating:<RatingStar rating={this.props.user.rating}/></h5>
+        }
+    }
+
     render() {
         const {displayHourlyForm} = this.state
         return (
             <div>
             <Row>
                 <Col>
+                {this.displayRating()}
                 {this.displayHourlyrate()}
                 
                 <Button variant="info" className="signup-bttn job text-right" onClick={this.handleClick}>{displayHourlyForm ? <div>Close</div> : <div>Update Hourly Rate</div>}</Button>

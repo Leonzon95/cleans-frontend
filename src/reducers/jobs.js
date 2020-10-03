@@ -24,7 +24,7 @@ function jobs(state={loading: true, data: []}, action) {
             return {loading: false, data: jobss}
         case "UPDATE_CLEANERS_RATING": 
             const jobsss = state.data.map(job => {
-                if (job.hiredCleaner.id === action.user.id) job.hiredCleaner = action.user;
+                if (job.hiredCleaner && job.hiredCleaner.id === action.user.id) job.hiredCleaner = action.user;
                 job.applicants.map(applicant => {
                     if (applicant.id === action.user.id) return action.user;
                     return applicant;

@@ -8,6 +8,7 @@ const RatingStar = props => {
             return (
             <FaStar size={25} 
                     color={ratingValue <= props.rating ? "#ffc107" : "#e4e5e9"} 
+                    key={ratingValue}
                     />
             )
         });
