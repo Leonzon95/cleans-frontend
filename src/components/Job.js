@@ -1,9 +1,14 @@
 import React from 'react';
 import { Card, Button, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import NewReview from './NewReview'
 
 const  Job = props => {
     const { job, address, user, applyToJob, applied, hiredCleaner} = props;
+
+    const handleComplete = () => {
+        props.complete(user.id, job.id, null, true)
+    }
 
     const displayButtons = () => {
         if (user.isCleaner) {
@@ -18,7 +23,7 @@ const  Job = props => {
                     <Link to={`/jobs/${job.id}/applicants`} className="bttn-link"><Button variant="info" className="signup-bttn" >See Applicants</Button></Link>
                 )
             } else if (job.status === "pending") {
-                return <Button variant="success" className="signup-bttn" onClick={()=> props.complete(user.id, job.id, null, true)}>Mark as completed</Button>
+                return <NewReview complete={handleComplete} hiredCleaner={hiredCleaner} />
             }
         }
     }

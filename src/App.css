@@ -112,3 +112,12 @@ body #footer {
 body .one-page-height {
     min-height: calc(100vh - 50px);
 }
+
+body .rating-star-form {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    cursor: pointer;
+    transition: color 200ms;
+
+}
