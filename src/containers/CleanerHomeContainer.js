@@ -93,7 +93,7 @@ class CleanerHomeContainer extends Component {
         if (!this.props.user.rating) {
             return <h5>You don't have a rating yet</h5>
         } else {
-            return <h5>Your rating:<RatingStar rating={this.props.user.rating}/></h5>
+            return <h5>Your Rating:<RatingStar rating={this.props.user.rating}/></h5>
         }
     }
 

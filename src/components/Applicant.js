@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import RatingStar from './RatingStar';
+import ReviewsContainer from '../containers/ReviewsContainer'
 
 const Applicant= props => {
     const applicant = props.applicant;
@@ -22,6 +23,7 @@ const Applicant= props => {
                 </Card.Text>
                 <Button variant="success" className="signup-bttn" onClick={handleClick} >Hire</Button>
             </Card.Body>
+            <ReviewsContainer />
         </Card>
     )
 }
