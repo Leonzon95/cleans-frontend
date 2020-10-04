@@ -23,7 +23,7 @@ const Applicant= props => {
                 </Card.Text>
                 <Button variant="success" className="signup-bttn" onClick={handleClick} >Hire</Button>
             </Card.Body>
-            <ReviewsContainer />
+            <ReviewsContainer applicantId={applicant.id} />
         </Card>
     )
 }
