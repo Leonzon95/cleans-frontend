@@ -4,6 +4,7 @@ body .bg-light {
 
 body .signup-bttn{
     border-radius: 20px;
+    cursor: pointer;
 }
 
 body .nav-links {
