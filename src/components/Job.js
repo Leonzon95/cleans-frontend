@@ -48,19 +48,19 @@ const  Job = props => {
         <Card id={job.id}>
             <Card.Body>
                 <Row>
-                <Col>
-                <Card.Title as="h5">{job.description}</Card.Title>
-                <Card.Text>
-                    Date: {job.date}
-                    <br></br>
-                    Estimated job time: {job.estimatedTime}
-                    <br></br>
-                    Location: <br></br>
-                    {address.streetAddress}<br></br>
-                    {address.city}, {address.state} {address.country} {address.zipcode}
-                </Card.Text>
-                {displayButtons()}
-                </Col>
+                    <Col>
+                        <Card.Title as="h5">{job.description}</Card.Title>
+                        <Card.Text>
+                            Date: {job.date}
+                            <br></br>
+                            Estimated job time: {job.estimatedTime}
+                            <br></br>
+                            Location: <br></br>
+                            {address.streetAddress}<br></br>
+                            {address.city}, {address.state} {address.country} {address.zipcode}
+                        </Card.Text>
+                        {displayButtons()}
+                    </Col>
               
                 {hiredCleaner ? displayCleaner() : null}
                

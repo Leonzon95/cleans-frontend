@@ -52,4 +52,5 @@ const mapStateToProps = state => {
         isJobsLoading: state.jobs.loading
     }
 }
+
 export default connect(mapStateToProps, { addAddress, addJob, fetchAddresses, fetchJobs, updateJob })(RegUserRoutesContainer);

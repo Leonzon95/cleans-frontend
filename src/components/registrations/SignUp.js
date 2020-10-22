@@ -15,10 +15,6 @@ class SignUp extends Component {
       errors: ''
     };
 
-    UNSAFE_componentWillMount() {
-      return this.props.loggedInStatus ? this.redirect() : null;
-    }
-
     handleChange = (event) => {
         let {name, value} = event.target;
         if (name === 'is_cleaner') {

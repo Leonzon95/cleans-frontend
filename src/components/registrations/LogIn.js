@@ -1,5 +1,5 @@
 import React,  { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import { Form, Col, Button, Alert, Row, Container } from 'react-bootstrap';
 
 class LogIn extends Component {
@@ -9,10 +9,6 @@ class LogIn extends Component {
       password: '',
       errors: ''
     };
-
-    UNSAFE_componentWillMount() {
-        return this.props.loggedInStatus ? this.redirect() : null
-    }
 
     handleChange = (event) => {
         const {name, value} = event.target;

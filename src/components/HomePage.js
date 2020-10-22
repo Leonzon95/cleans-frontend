@@ -19,7 +19,7 @@ const HomePage = (props) => {
     <div>
         <div id="home-page-background">
             <Container >
-                <Jumbotron id="home-page-jumbotron">
+                <Jumbotron fluid id="home-page-jumbotron">
                     <Row>
                     <Col xs={12} md={8}>
                         <h1 id="header-font">Cleans</h1>

@@ -11,9 +11,7 @@ import {sendLogIn, sendLogOut} from './actions/user';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Footer'
 
-
-
-class App extends Component{
+class App extends Component {
 
   handleLogin = (data) => {
     this.props.sendLogIn(data.user);
@@ -24,8 +22,7 @@ class App extends Component{
   }
 
   loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', 
-    {withCredentials: true})
+    axios.get('http://localhost:3001/logged_in', {withCredentials: true})
     .then(response => response.json())
     .then(json => {
       if (json.data.logged_in) {
